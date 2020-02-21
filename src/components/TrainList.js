@@ -10,10 +10,10 @@ class TrainList extends React.Component {
 		trainList: []
 	}
 
-	trainListCallback = (e) => {
+	trainListCallback = (e, station, cat, des) => {
 		const trainButton = e.target.id;
 		console.log(e.target.id);
-		fetch(`https://transportapi.com/v3/uk/train/station/NLW/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=NLW&darwin=false&destination=MCV&train_status=passenger`)
+		fetch(`https://transportapi.com/v3/uk/train/station/${station}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${cat}&darwin=false&destination=${des}&train_status=passenger`)
 			.then((response) => {
 				return response.json();
 			})
@@ -36,7 +36,10 @@ class TrainList extends React.Component {
 				<main className="main-content">
 					<p>{title}</p>
 					<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-						<button style={trainButton} id="Newton" onClick={this.trainListCallback}>Get Newton Trains</button>
+						<button style={trainButton} id="Newton" onClick={(NLW, MCV, MCV) => this.trainListCallback}>Get Newton Trains</button>
+					</ul>
+<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
+						<button style={trainButton} id="manvic" onClick={(MCV, NLW, NLW) => this.trainListCallback}>Get Newton Trains</button>
 					</ul>
 
 					<ul style={grid}>
