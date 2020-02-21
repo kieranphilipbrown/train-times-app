@@ -13,7 +13,7 @@ class TrainList extends React.Component {
 	trainListCallback = (e) => {
 		const trainButton = e.target.id;
 		console.log(e.target.id);
-		fetch(`https://transportapi.com/v3/uk/train/station/NLW/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=NLW&darwin=false&train_status=passenger`)
+		fetch(`https://transportapi.com/v3/uk/train/station/NLW/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=NLW&darwin=false&destination=MCV&train_status=passenger`)
 			.then((response) => {
 				return response.json();
 			})
@@ -46,9 +46,9 @@ class TrainList extends React.Component {
 						{trainList && trainList.length > 0 &&
 							trainList.map((train, i) =>
 								<li style={card} key={i}>
-
 									{console.log(train)}
-									<h4>Train to: {train.destination_name}</h4>
+									<h4>Train from: {train.destination_name} <span style={{background: "#59e32c", border: "1px solid #48c220", padding: "5px 10px", display: "inline-block", borderRadius: "3px"}}>{train.status}</span></h4>
+									<p>Operator: {train.operator_name}</p>
 									<p>Arriving at: {train.aimed_arrival_time}</p>
 									<p>Departing at: {train.aimed_departure_time}</p>
 								</li>
