@@ -36,10 +36,10 @@ class TrainList extends React.Component {
 				<main className="main-content">
 					<p>{title}</p>
 					<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-						<button style={trainButton} id="Newton" onClick={(NLW, MCV, MCV) => this.trainListCallback}>Get Newton Trains</button>
+						<button style={trainButton} id="Newton" onClick={('NLW', 'MCV', 'MCV') => this.trainListCallback}>Get Newton Trains</button>
 					</ul>
 <ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-						<button style={trainButton} id="manvic" onClick={(MCV, NLW, NLW) => this.trainListCallback}>Get Newton Trains</button>
+						<button style={trainButton} id="manvic" onClick={('MCV', 'NLW', 'NLW') => this.trainListCallback}>Get Newton Trains</button>
 					</ul>
 
 					<ul style={grid}>
