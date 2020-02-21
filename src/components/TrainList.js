@@ -10,10 +10,16 @@ class TrainList extends React.Component {
 		trainList: []
 	}
 
-	trainListCallback = (e, station, cat, des) => {
+	trainListCallback = (e) => {
 		const trainButton = e.target.id;
+		console.log(e)
+		console.log(e.target)
 		console.log(e.target.id);
-		fetch(`https://transportapi.com/v3/uk/train/station/${station}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${cat}&darwin=false&destination=${des}&train_status=passenger`)
+		console.log(e.target.dataset.des);
+		const destination = e.target.dataset.des;
+
+
+		fetch(`https://transportapi.com/v3/uk/train/station/${trainButton}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${trainButton}&darwin=false&destination=${destination}&train_status=passenger`)
 			.then((response) => {
 				return response.json();
 			})
@@ -36,11 +42,14 @@ class TrainList extends React.Component {
 				<main className="main-content">
 					<p>{title}</p>
 					<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-						<button style={trainButton} id="Newton" onClick={('NLW', 'MCV', 'MCV') => this.trainListCallback}>Get Newton Trains</button>
+						<button style={trainButton} id="NLW" data-des="MCV" onClick={this.trainListCallback}>Get Newton Trains</button>
 					</ul>
-<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-						<button style={trainButton} id="manvic" onClick={('MCV', 'NLW', 'NLW') => this.trainListCallback}>Get Newton Trains</button>
+
+
+					<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
+						<button style={trainButton} id="MCV" data-des="NLW" onClick={this.trainListCallback}>Get Victoria Trains</button>
 					</ul>
+
 
 					<ul style={grid}>
 						<p>Date: {date}</p>
