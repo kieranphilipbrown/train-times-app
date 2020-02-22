@@ -59,7 +59,8 @@ class TrainList extends React.Component {
 								<li style={card} key={i}>
 									{console.log(train)}
 									<p>Train to: <span style={{fontWeight: "bold"}}>{train.destination_name}</span></p>
-									<span style={{background: "#59e32c", border: "1px solid #48c220", padding: "5px 10px", display: "inline-block", borderRadius: "3px"}}>{train.status}</span>
+									<p style={{fontSize: "12px", display: "block", marginBottom: "15px"}}>From: {train.origin_name}</p>
+									<span style={{fontSize: "12px", background: "#59e32c", border: "1px solid #48c220", padding: "5px 10px", display: "inline-block", borderRadius: "3px"}}>{train.status}</span>
 									<p>Operator: {train.operator_name}</p>
 									<p>Arriving at: <span style={{background: "#59e32c", border: "1px solid #48c220", padding: "5px 10px", display: "inline-block", borderRadius: "3px"}}>{train.aimed_arrival_time}</span></p>
 									<p>Departing at: {train.aimed_departure_time}</p>
