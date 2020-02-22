@@ -60,6 +60,7 @@ class TrainList extends React.Component {
 									<p>Operator: {train.operator_name}</p>
 									<p>Arriving at: <span style={{background: "#59e32c", border: "1px solid #48c220", padding: "5px 10px", display: "inline-block", borderRadius: "3px"}}>{train.aimed_arrival_time}</span></p>
 									<p>Departing at: {train.aimed_departure_time}</p>
+									<p>Platform: {train.platform}</p>
 								</li>
 							)
 						}
