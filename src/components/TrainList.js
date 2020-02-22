@@ -12,8 +12,10 @@ class TrainList extends React.Component {
 
 	trainListCallback = (e) => {
 		const trainButton = e.target.id;
+		const destination = e.target.dataset.des;
 
-		fetch(`https://transportapi.com/v3/uk/train/station/${trainButton}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${trainButton}&darwin=false&train_status=passenger`)
+		//fetch(`https://transportapi.com/v3/uk/train/station/${trainButton}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${trainButton}&darwin=false&train_status=passenger`)
+		fetch(`https://transportapi.com/v3/uk/train/station/${trainButton}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${destination}&darwin=false&train_status=passenger`)
 			.then((response) => {
 				return response.json();
 			})
