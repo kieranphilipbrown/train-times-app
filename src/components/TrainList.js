@@ -42,6 +42,9 @@ class TrainList extends React.Component {
 						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
 							<button style={trainButton} id="MCV" data-des="NLW" onClick={this.trainListCallback}>Get Victoria Trains to Newton</button>
 						</ul>
+						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
+							<button style={trainButton} id="NLW" data-des="LIV" onClick={this.trainListCallback}>Get Newton Trains to Liverpool</button>
+						</ul>
 					</div>
 
 					<div style={{ margin: "0 auto", maxWidth: "1200px", padding: "20px 0", display: 'flex', justifyContent: 'space-between', listStyleType: 'none', paddingLeft: "0"}}>
