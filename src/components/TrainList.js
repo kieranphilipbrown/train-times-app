@@ -82,10 +82,10 @@ class TrainList extends React.Component {
 
 					<SearchContainer>
 						<form onSubmit={this.handleSubmit}>
-							<label htmlFor="stationfrom">Where from?</label>
+							<label style={{display: 'block'}} htmlFor="stationfrom">Where from?</label>
 							<input id="stationfrom" type="text" placeholder="Station Name" value={this.state.stationFrom} onChange={this.handleFromChange} />
 
-							<label htmlFor="stationto">Where to?</label>
+							<label style={{display: 'block'}} htmlFor="stationto">Where to?</label>
 							<input id="stationto" type="text" placeholder="Station Name" value={this.state.stationTo} onChange={this.handleToChange} />
 							<button>Search</button>
 						</form>
