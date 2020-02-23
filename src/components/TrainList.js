@@ -84,7 +84,7 @@ const pageWidth = {
 const trainButton = {
 	background: '#6f2cac',
 	border: "none",
-	borderRadius: "4px",
+	borderRadius: "18px",
 	color: "#fff",
 	fontFamily: 'Comfortaa',
 	padding: "10px 15px",
