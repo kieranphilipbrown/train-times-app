@@ -34,6 +34,7 @@ class TrainList extends React.Component {
 			<>
 				<main className="main-content">
 					<div style={buttonContainer}>
+<div style={pageWidth}>
 						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none', paddingLeft: "0" }}>
 							<button style={trainButton} id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw to Mcv</button>
 						</ul>
@@ -43,6 +44,7 @@ class TrainList extends React.Component {
 						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
 							<button style={trainButton} id="NLW" data-des="LIV" onClick={this.trainListCallback}>Nlw to Liv</button>
 						</ul>
+</div>
 					</div>
 
 					<div style={pageWidth}>
