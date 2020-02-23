@@ -152,7 +152,7 @@ const trainButton = {
 	borderRadius: "18px",
 	color: "#fff",
 	fontFamily: 'Comfortaa',
-fontSize: 12px,
+fontSize: '12px',
 	padding: "10px 15px",
 }
 
