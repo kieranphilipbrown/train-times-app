@@ -218,7 +218,7 @@ const SearchForm = styled.form`
 const SearchInput = styled.input`
 	border: 2px solid #cecece;
 	border-radius: 5px;
-	font-family: 'Comfortaa, sans-serif';
+	font-family: Comfortaa, sans-serif;
 	margin: 0 0 15px;
 	outline: none;
 	padding: 10px 18px;
