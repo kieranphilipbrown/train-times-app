@@ -288,7 +288,7 @@ const CardTwo = styled.div`
 
 	@media ${device.tablet} {
 		margin-bottom: 0;
-		padding: 1.5rem;
+		padding: 0.3rem 1.5rem;
 	}
 `
 
