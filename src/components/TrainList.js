@@ -115,7 +115,7 @@ class TrainList extends React.Component {
 						</InfoContainer>
 
 						<Grid>
-							{trainList && trainList.length > 0 &&
+							{trainList && trainList.length > 0 && !trainFetchError &&
 								trainList.map((train, i) =>
 									<li style={card} key={i}>
 										{/* {console.log(train)} */}
