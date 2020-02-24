@@ -10,7 +10,8 @@ class TrainList extends React.Component {
 		stationName: '',
 		trainList: [],
 		stationFrom: '',
-		stationTo: ''
+		stationTo: '',
+		trainFetchError: false
 	}
 
 	trainListCallback = (e) => {
@@ -25,7 +26,8 @@ class TrainList extends React.Component {
 					date: data.date,
 					timeOfDay: data.time_of_day,
 					stationName: data.station_name,
-					trainList: data.departures.all
+					trainList: data.departures.all,
+					trainFetchError: !this.state.trainFetchError,
 				})
 			});
 	}
@@ -58,13 +60,19 @@ class TrainList extends React.Component {
 					date: data.date,
 					timeOfDay: data.time_of_day,
 					stationName: data.station_name,
-					trainList: data.departures.all
+					trainList: data.departures.all,
+					trainFetchError: !this.state.trainFetchError,
 				})
+			}).catch((error) => {
+				console.log('Error:', error);
+				this.setState({
+					trainFetchError: !this.state.trainFetchError,
+				});
 			});
 	}
 
 	render() {
-		const { trainList, date, timeOfDay, stationName } = this.state;
+		const { trainList, date, timeOfDay, stationName, trainFetchError } = this.state;
 		return (
 			<>
 				<main className="main-content">
@@ -92,6 +100,12 @@ class TrainList extends React.Component {
 							</SearchForm>
 						</div>
 					</SearchContainer>
+
+					{ trainFetchError &&
+						<div style={pageWidth}>
+							<ErrorMessage><ErrorMessageIcon xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/><path d="M0 0h24v24H0z" fill="none"/></ErrorMessageIcon>No results for that search. Please try again.</ErrorMessage>
+						</div>
+					}
 
 					<div style={pageWidth}>
 						<InfoContainer>
@@ -147,6 +161,24 @@ const pageWidth = {
 	paddingLeft: "5%",
 	paddingRight: "5%"
 }
+
+const ErrorMessage = styled.p`
+	align-items: center;
+	background: white;
+	border-radius: 18px;
+	box-shadow: 0 3px 13px -2px rgba(0,0,0,.15);
+	display: flex;
+    justify-content: center;
+	padding: 0.7rem;
+	margin-bottom: 0;
+}
+`;
+
+const ErrorMessageIcon = styled.svg`
+	fill: red;
+	margin-right: 8px;
+}
+`;
 
 const TrainButton = styled.button`
 	background: #6f2cac;
