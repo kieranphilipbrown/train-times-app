@@ -263,11 +263,12 @@ const InfoContainer = styled.div`
 	list-style-type: none;
 	margin: 0 auto;
 	max-width: 1200px;
-	padding: 20px 0;
+	padding: 20px 0 0;
 
 	@media ${device.tablet} {
 		display: flex;
 		justify-content: space-between;
+		padding: 20px 0;
 	}
 `;
 
@@ -275,7 +276,7 @@ const Grid = styled.ul`
 	display: grid;
 	flex-direction: column;
 	grid-template-columns: 1fr;
-	grid-gap: 40px;
+	grid-gap: 20px;
 	list-style-type: none;
 	margin: 0 auto 40px;
 	max-width: 1200px;
@@ -283,6 +284,7 @@ const Grid = styled.ul`
 
 	@media ${device.tablet} {
 		flex-direction: row;
+		grid-gap: 40px;
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 `;
