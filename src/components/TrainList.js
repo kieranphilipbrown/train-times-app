@@ -304,7 +304,8 @@ const card = {
 	background: '#fff',
 	borderRadius: '18px',
 	boxShadow: "0 3px 13px -2px rgba(0,0,0,.15)",
-	padding: '1.5rem'
+	padding: '1.5rem',
+	textAlign: 'left'
 }
 
 const CardTwo = styled.div`
