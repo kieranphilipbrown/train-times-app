@@ -27,8 +27,13 @@ class TrainList extends React.Component {
 					timeOfDay: data.time_of_day,
 					stationName: data.station_name,
 					trainList: data.departures.all,
-					trainFetchError: !this.state.trainFetchError,
+					trainFetchError: false,
 				})
+			}).catch((error) => {
+				console.log('Error:', error);
+				this.setState({
+					trainFetchError: true,
+				});
 			});
 	}
 
@@ -61,12 +66,12 @@ class TrainList extends React.Component {
 					timeOfDay: data.time_of_day,
 					stationName: data.station_name,
 					trainList: data.departures.all,
-					trainFetchError: !this.state.trainFetchError,
+					trainFetchError: false,
 				})
 			}).catch((error) => {
 				console.log('Error:', error);
 				this.setState({
-					trainFetchError: !this.state.trainFetchError,
+					trainFetchError: true,
 				});
 			});
 	}
