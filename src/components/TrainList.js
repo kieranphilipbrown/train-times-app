@@ -158,6 +158,8 @@ const device = {
 };
 
 const pageWidth = {
+	margin: "0 auto",
+	maxWidth: "1200px",
 	paddingLeft: "5%",
 	paddingRight: "5%"
 }
