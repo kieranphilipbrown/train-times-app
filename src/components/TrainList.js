@@ -247,10 +247,17 @@ const SearchLabel = styled.label`
 const SearchButton = styled.button`
 	border: 2px solid #cecece;
 	border-radius: 5px;
+	font-family: 'Comfortaa', sans-serif;
 	margin: 0 0 10px;
 	outline: none;
 	padding: 10px 18px;
 	transition: 0.4s ease;
+
+	&:hover {
+		background: #6f2cac;
+		color: #fff;
+		cursor: pointer;
+	}
 
 	&:focus {
 		border-color: #6f2cac;
