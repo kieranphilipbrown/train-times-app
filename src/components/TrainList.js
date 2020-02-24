@@ -70,25 +70,27 @@ class TrainList extends React.Component {
 				<main className="main-content">
 					<div style={buttonContainer}>
 						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none', paddingLeft: "0" }}>
-							<button style={trainButton} id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw to Mcv</button>
+							<TrainButton id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw to Mcv</TrainButton>
 						</ul>
 						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-							<button style={trainButton} id="MCV" data-des="NLW" onClick={this.trainListCallback}>Mcv to Nlw</button>
+							<TrainButton id="MCV" data-des="NLW" onClick={this.trainListCallback}>Mcv to Nlw</TrainButton>
 						</ul>
 						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-							<button style={trainButton} id="NLW" data-des="LIV" onClick={this.trainListCallback}>Nlw to Liv</button>
+							<TrainButton id="NLW" data-des="LIV" onClick={this.trainListCallback}>Nlw to Liv</TrainButton>
 						</ul>
 					</div>
 
 					<SearchContainer>
-						<form onSubmit={this.handleSubmit}>
-							<label style={{display: 'block'}} htmlFor="stationfrom">Where from?</label>
-							<input id="stationfrom" type="text" placeholder="Station Name" value={this.state.stationFrom} onChange={this.handleFromChange} />
+						<div style={pageWidth}>
+							<SearchForm onSubmit={this.handleSubmit}>
+								<SearchLabel htmlFor="stationfrom">Where from?</SearchLabel>
+								<SearchInput id="stationfrom" type="text" placeholder="Station Name" value={this.state.stationFrom} onChange={this.handleFromChange} />
 
-							<label style={{display: 'block'}} htmlFor="stationto">Where to?</label>
-							<input id="stationto" type="text" placeholder="Station Name" value={this.state.stationTo} onChange={this.handleToChange} />
-							<button>Search</button>
-						</form>
+								<SearchLabel htmlFor="stationto">Where to?</SearchLabel>
+								<SearchInput id="stationto" type="text" placeholder="Station Name" value={this.state.stationTo} onChange={this.handleToChange} />
+								<SearchButton>Search</SearchButton>
+							</SearchForm>
+						</div>
 					</SearchContainer>
 
 					<div style={pageWidth}>
@@ -146,20 +148,82 @@ const pageWidth = {
 	paddingRight: "5%"
 }
 
-const trainButton = {
-	background: '#6f2cac',
-	border: "none",
-	borderRadius: "18px",
-	color: "#fff",
-	fontFamily: 'Comfortaa',
-fontSize: '12px',
-	padding: "10px 15px",
-}
+const TrainButton = styled.button`
+	background: #6f2cac;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font-family: Comfortaa;
+	font-size: 12px;
+	outline: none;
+	padding: 10px 15px;
+	transition: 0.4s ease;
 
+	&:focus {
+		border-color: #6f2cac;
+		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
+	}
+`
 const SearchContainer = styled.div`
 	background: white;
 	border-bottom: 1px solid #cecece;
 	padding: 15px 0;
+`;
+
+const SearchForm = styled.form`
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	@media ${device.tablet} {
+		align-items: center;
+		flex-direction: row;
+	}
+`;
+
+const SearchInput = styled.input`
+	border: 2px solid #cecece;
+	border-radius: 5px;
+	margin: 0 0 15px;
+	outline: none;
+	padding: 10px 18px;
+	transition: 0.4s ease;
+
+	&:focus {
+		border-color: #6f2cac;
+		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
+	}
+
+	@media ${device.tablet} {
+		margin: 0 10px;
+	}
+`;
+
+const SearchLabel = styled.label`
+	margin-bottom: 5px;
+
+	@media ${device.tablet} {
+		margin-bottom: 0;
+	}
+`;
+
+const SearchButton = styled.button`
+	border: 2px solid #cecece;
+	border-radius: 5px;
+	margin: 0 0 10px;
+	outline: none;
+	padding: 10px 18px;
+	transition: 0.4s ease;
+
+	&:focus {
+		border-color: #6f2cac;
+		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
+	}
+
+	@media ${device.tablet} {
+		margin-bottom: 0;
+	}
 `;
 
 const InfoContainer = styled.div`
@@ -209,7 +273,13 @@ const CardTwo = styled.div`
 	padding: 0.5rem;
 
 	&:nth-child(2) {
-		margin: 0 15px;
+		margin-left: 0;
+		margin-right: 0;
+
+		@media ${device.tablet} {
+			margin-left: 15px;
+			margin-right: 15px;
+		}
 	}
 
 	&:nth-child(3) {
