@@ -82,15 +82,18 @@ class TrainList extends React.Component {
 			<>
 				<main className="main-content">
 					<div style={buttonContainer}>
-						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none', paddingLeft: "0" }}>
-							<TrainButton id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw to Mcv</TrainButton>
-						</ul>
-						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-							<TrainButton id="MCV" data-des="NLW" onClick={this.trainListCallback}>Mcv to Nlw</TrainButton>
-						</ul>
-						<ul style={{ display: 'flex', justifyContent: 'space-between', listStyleType: 'none' }}>
-							<TrainButton id="NLW" data-des="LIV" onClick={this.trainListCallback}>Nlw to Liv</TrainButton>
-						</ul>
+						<TrainButtonContainer>
+							<TrainButton id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw => Mcv</TrainButton>
+						</TrainButtonContainer>
+						<TrainButtonContainer>
+							<TrainButton id="MCV" data-des="NLW" onClick={this.trainListCallback}>Mcv => Nlw</TrainButton>
+						</TrainButtonContainer>
+						<TrainButtonContainer>
+							<TrainButton id="NLW" data-des="MAN" onClick={this.trainListCallback}>Nlw => Man</TrainButton>
+						</TrainButtonContainer>
+						<TrainButtonContainer>
+							<TrainButton id="MAN" data-des="NLW" onClick={this.trainListCallback}>Man => Nlw</TrainButton>
+						</TrainButtonContainer>
 					</div>
 
 					<SearchContainer>
@@ -184,6 +187,11 @@ const ErrorMessageIcon = styled.svg`
 	margin-right: 8px;
 }
 `;
+
+const TrainButtonContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`
 
 const TrainButton = styled.button`
 	background: #6f2cac;
