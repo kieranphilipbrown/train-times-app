@@ -82,18 +82,10 @@ class TrainList extends React.Component {
 			<>
 				<main className="main-content">
 					<div style={buttonContainer}>
-						<TrainButtonContainer>
-							<TrainButton id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw => Mcv</TrainButton>
-						</TrainButtonContainer>
-						<TrainButtonContainer>
-							<TrainButton id="MCV" data-des="NLW" onClick={this.trainListCallback}>Mcv => Nlw</TrainButton>
-						</TrainButtonContainer>
-						<TrainButtonContainer>
-							<TrainButton id="NLW" data-des="MAN" onClick={this.trainListCallback}>Nlw => Man</TrainButton>
-						</TrainButtonContainer>
-						<TrainButtonContainer>
-							<TrainButton id="MAN" data-des="NLW" onClick={this.trainListCallback}>Man => Nlw</TrainButton>
-						</TrainButtonContainer>
+						<TrainButton id="NLW" data-des="MCV" onClick={this.trainListCallback}>Nlw => Mcv</TrainButton>
+						<TrainButton id="MCV" data-des="NLW" onClick={this.trainListCallback}>Mcv => Nlw</TrainButton>
+						<TrainButton id="NLW" data-des="MAN" onClick={this.trainListCallback}>Nlw => Man</TrainButton>
+						<TrainButton id="MAN" data-des="NLW" onClick={this.trainListCallback}>Man => Nlw</TrainButton>
 					</div>
 
 					<SearchContainer>
@@ -185,13 +177,7 @@ const ErrorMessage = styled.p`
 const ErrorMessageIcon = styled.svg`
 	fill: red;
 	margin-right: 8px;
-}
 `;
-
-const TrainButtonContainer = styled.div`
-	display: flex;
-	justify-content: space-between;
-`
 
 const TrainButton = styled.button`
 	background: #6f2cac;
@@ -200,6 +186,8 @@ const TrainButton = styled.button`
 	color: #fff;
 	font-family: Comfortaa;
 	font-size: 12px;
+	margin: 0 10px;
+	min-width: 100px;
 	outline: none;
 	padding: 10px 15px;
 	transition: 0.4s ease;
@@ -208,7 +196,7 @@ const TrainButton = styled.button`
 		border-color: #6f2cac;
 		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
 	}
-`
+`;
 const SearchContainer = styled.div`
 	background: white;
 	border-bottom: 1px solid #cecece;
@@ -343,9 +331,12 @@ const buttonContainer = {
 	background: "white",
 	borderBottom: "1px solid #cecece",
 	display: "flex",
-	justifyContent: "center",
+	justifyContent: "space-between",
+	overflow: "auto",
 	paddingLeft: "5%",
 	paddingRight: "5%",
+	paddingBottom: "20px",
+	paddingTop: "20px",
 }
 
 export default TrainList;
