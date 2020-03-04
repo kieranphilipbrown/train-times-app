@@ -315,7 +315,8 @@ const card = {
 }
 
 const cardUpper = {
-	padding: '1.5rem'
+	padding: '1.5rem',
+	textAlign: 'left',
 }
 
 const cardLower = {
