@@ -135,10 +135,21 @@ class TrainList extends React.Component {
 												</span>
 											}
 											<p style={{color: "#6e6e6e", fontSize: "14px", display: "block", marginBottom: "15px"}}>From: {train.origin_name}</p>
-											<p>Arriving at: {train.aimed_arrival_time}</p>
-											<p>Departing at: {train.aimed_departure_time}</p>
 											<p>Expected: {train.expected_arrival_time}</p>
-
+										</div>
+										<div style={cardMiddle}>
+											<div>
+												<p style={{alignItems: 'center', display: 'flex', fontSize: '14px'}}>
+													<svg style={{marginRight: "8px", marginTop: "-3px", fill: "#8e8e8e"}} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+													Arrives: {train.aimed_arrival_time}
+												</p>
+											</div>
+											<div>
+												<p style={{alignItems: 'center', display: 'flex', fontSize: '14px'}}>
+													<svg style={{marginRight: "8px", marginTop: "-3px", fill: "#8e8e8e"}} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+													Departs: {train.aimed_departure_time}
+												</p>
+											</div>
 										</div>
 										<div style={cardLower}>
 											<span style={{color: '#737B87', fontSize: '12px', display: 'block', fontWeight: 'bold', textAlign: 'left'}}>OPERATOR</span>
@@ -166,7 +177,7 @@ const size = {
 const device = {
 	tablet: `(min-width: ${size.tablet})`,
 	desktop: `(min-width: ${size.desktop})`
-};
+}
 
 const pageWidth = {
 	margin: "0 auto",
@@ -184,7 +195,6 @@ const ErrorMessage = styled.p`
     justify-content: center;
 	padding: 0.7rem;
 	margin-bottom: 0;
-}
 `;
 
 const ErrorMessageIcon = styled.svg`
@@ -324,6 +334,14 @@ const cardUpper = {
 	textAlign: 'left',
 }
 
+const cardMiddle = {
+	borderTop: '1px solid #f7f8f9',
+	display: 'flex',
+	justifyContent: 'space-between',
+	marginTop: 'auto',
+	padding: '0.4rem 1.5rem',
+}
+
 const cardLower = {
 	alignItems: 'center',
 	background: '#F7F8F9',
@@ -331,7 +349,6 @@ const cardLower = {
 	borderBottomRightRadius: '18px',
 	display: 'flex',
 	justifyContent: 'space-between',
-	marginTop: 'auto',
 	minHeight: '70px',
 	padding: '0 1.5rem'
 }
@@ -364,7 +381,7 @@ const CardTwo = styled.div`
 		margin-bottom: 0;
 		padding: 0.3rem 1.5rem;
 	}
-`
+`;
 
 const buttonContainer = {
 	background: "white",
