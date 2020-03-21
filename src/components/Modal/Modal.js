@@ -49,9 +49,17 @@ class Modal extends React.Component {
     }
 }
 
-
-
 export default Modal;
+
+const size = {
+	tablet: '768px',
+	desktop: '960px'
+}
+
+const device = {
+	tablet: `(min-width: ${size.tablet})`,
+	desktop: `(min-width: ${size.desktop})`
+}
 
 const ModalOuter = styled.div `
     align-items: center;
@@ -74,7 +82,11 @@ const ModalInner = styled.div `
     margin: 0 auto;
     max-width: 380px;
     min-height: 200px;
-    width: 380px;
+    width: 92%;
+
+	@media ${device.tablet} {
+		width: 380px;
+	}
 `;
 
 const ModalUpper = styled.div `
