@@ -144,7 +144,7 @@ class TrainList extends React.Component {
 										{console.log(train)}
 										{
 											showModal &&
-											<Modal data={train} />
+											<Modal data={train} toggleModal={this.toggleModal} />
 										}
 										<div key={i} onClick={this.toggleModal}>
 											<li style={card}>

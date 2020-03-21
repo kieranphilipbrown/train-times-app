@@ -3,12 +3,15 @@ import styled from 'styled-components';
 
 class Modal extends React.Component {
     render() {
-        const { data } = this.props;
+        const { data, toggleModal } = this.props;
         return (
             <ModalOuter>
                 <ModalInner>
+                    <ModalClose onClick={toggleModal}>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="38" viewBox="0 0 24 24" width="38"><path d="M0 0h24v24H0V0z" fill="none"/><path fill="#9a9a9a" d="M13.89 8.7L12 10.59 10.11 8.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 8.7 13.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l1.89 1.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l1.89-1.89c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.38-1.41 0zM12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                    </ModalClose>
                     <ModalUpper>
-                        <p>Train to: <span style={{fontWeight: "bold"}}>{data.destination_name}</span></p>
+                        <p style={{fontWeight: "bold", marginRight: "45px"}}>{data.destination_name}</p>
                         {
                             data.status === "LATE"
                             ?
@@ -73,6 +76,20 @@ const ModalOuter = styled.div `
     top: 0;
 `;
 
+const ModalClose = styled.button `
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    position: absolute;
+    right: 1.3rem;
+    top: 1.3rem;
+    width: 48px;
+`;
+
 const ModalInner = styled.div `
 	background: #ffffff;
 	border-radius: 18px;
@@ -82,6 +99,7 @@ const ModalInner = styled.div `
     margin: 0 auto;
     max-width: 380px;
     min-height: 200px;
+    position: relative;
     width: 92%;
 
 	@media ${device.tablet} {
