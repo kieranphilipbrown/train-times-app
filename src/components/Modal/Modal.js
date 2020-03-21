@@ -63,7 +63,7 @@ const device = {
 
 const ModalOuter = styled.div `
     align-items: center;
-    background: #f6f2edf7;
+    background: #f6f2edb8;
     bottom: 0;
     display: flex;
     justify-content: center;
