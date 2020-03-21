@@ -48,7 +48,7 @@ class TrainList extends React.Component {
 	}
 
 	toggleModal = (event) => {
-		console.log(event)
+		console.log(event);
 		this.setState({
 			showModal: !this.state.showModal,
 		});
@@ -141,32 +141,29 @@ class TrainList extends React.Component {
 						<Grid>
 							{trainList && trainList.length > 0 && !trainFetchError &&
 								trainList.map((train, i) =>
-									<>
-										{console.log(train)}
+									<div key={i} onClick={this.toggleModal}>
 										{
 											showModal &&
 											<Modal data={train} toggleModal={this.toggleModal} />
 										}
-										<div key={i} onClick={this.toggleModal}>
-											<li style={card}>
-												<div style={cardUpper}>
-													<p style={{color: "#464646", fontSize: "18px", fontWeight: "bold", marginTop: "0", paddingRight: "10px"}}><span style={{color: "#000"}}>{train.expected_arrival_time}</span> {train.destination_name}</p>
-													<p style={{color: "#6e6e6e", fontSize: "14px"}}> From: {train.origin_name}</p>
-													{
-														train.status === "LATE" || train.status === "CANCELLED"
-														?
-														<span style={{fontSize: "14px", color: "#a93a10"}}>
-															{train.status.toLowerCase()}
-														</span>
-														:
-														<span style={{fontSize: "14px", color: "#4ac721"}}>
-															{train.status.toLowerCase()}
-														</span>
-													}
-												</div>
-											</li>
-										</div>
-									</>
+										<li style={card}>
+											<div style={cardUpper}>
+												<p style={{color: "#464646", fontSize: "18px", fontWeight: "bold", marginTop: "0", paddingRight: "10px"}}><span style={{color: "#000"}}>{train.expected_arrival_time}</span> {train.destination_name}</p>
+												<p style={{color: "#6e6e6e", fontSize: "14px"}}> From: {train.origin_name}</p>
+												{
+													train.status === "LATE" || train.status === "CANCELLED"
+													?
+													<span style={{fontSize: "14px", color: "#a93a10"}}>
+														{train.status.toLowerCase()}
+													</span>
+													:
+													<span style={{fontSize: "14px", color: "#4ac721"}}>
+														{train.status.toLowerCase()}
+													</span>
+												}
+											</div>
+										</li>
+									</div>
 								)
 							}
 						</Grid>

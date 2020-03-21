@@ -4,6 +4,7 @@ import styled from 'styled-components';
 class Modal extends React.Component {
     render() {
         const { data, toggleModal } = this.props;
+        console.log(data);
         return (
             <ModalOuter>
                 <ModalInner>
