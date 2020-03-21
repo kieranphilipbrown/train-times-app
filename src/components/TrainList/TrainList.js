@@ -149,7 +149,7 @@ class TrainList extends React.Component {
 										<div key={i} onClick={this.toggleModal}>
 											<li style={card}>
 												<div style={cardUpper}>
-													<p style={{color: "#464646", fontSize: "18px", fontWeight: "bold", paddingRight: "10px"}}><span style={{color: "#000"}}>{train.expected_arrival_time}</span> {train.destination_name}</p>
+													<p style={{color: "#464646", fontSize: "18px", fontWeight: "bold", marginTop: "0", paddingRight: "10px"}}><span style={{color: "#000"}}>{train.expected_arrival_time}</span> {train.destination_name}</p>
 													<p style={{color: "#6e6e6e", fontSize: "14px"}}> From: {train.origin_name}</p>
 													{
 														train.status === "LATE" || train.status === "CANCELLED"
@@ -364,7 +364,7 @@ const card = {
 }
 
 const cardUpper = {
-	padding: '1rem',
+	padding: '1.3rem',
 	textAlign: 'left',
 }
 
