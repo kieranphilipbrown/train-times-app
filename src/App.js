@@ -1,5 +1,5 @@
 import React from 'react';
-import TrainList from '../src/components/TrainList';
+import TrainList from '../src/components/TrainList/TrainList';
 import './App.css';
 
 function App() {
