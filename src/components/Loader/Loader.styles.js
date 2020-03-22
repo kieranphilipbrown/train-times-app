@@ -12,7 +12,8 @@ export const StyledLoader = styled.div `
 	position: absolute;
 	right: 0;
 	top: 0;
-    width: 100%;
+	width: 100%;
+	z-index: 10;
 
     svg {
         -webkit-animation: flickerAnimation 1.5s infinite;

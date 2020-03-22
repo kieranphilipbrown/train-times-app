@@ -5,6 +5,7 @@ import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import InfoBox from '../InfoBox/InfoBox';
+import Card from '../Card/Card';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
 
 const buttonData = [
@@ -126,7 +127,7 @@ class TrainList extends React.Component {
 	// }
 
 	render() {
-		const { trainList, date, timeOfDay, stationName, trainFetchError, isLoading, showModal, selectedTrain } = this.state;
+		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain } = this.state;
 		return (
 			<>
 				<Loader showLoader={isLoading} />
@@ -161,25 +162,7 @@ class TrainList extends React.Component {
 						<Grid>
 							{trainList && trainList.length > 0 && !trainFetchError &&
 								trainList.map((train, i) =>
-									<div key={i} onClick={() => this.setSelectedTrain(train)}>
-										<li style={card}>
-											<div style={cardUpper}>
-												<p style={{color: "#464646", fontSize: "18px", fontWeight: "bold", marginTop: "0", paddingRight: "10px"}}><span style={{color: "#000"}}>{train.expected_arrival_time}</span> {train.destination_name}</p>
-												<p style={{color: "#6e6e6e", fontSize: "14px"}}> From: {train.origin_name}</p>
-												{
-													train.status === "LATE" || train.status === "CANCELLED"
-													?
-													<span style={{fontSize: "14px", color: "#a93a10"}}>
-														{train.status.toLowerCase()}
-													</span>
-													:
-													<span style={{fontSize: "14px", color: "#4ac721"}}>
-														{train.status.toLowerCase()}
-													</span>
-												}
-											</div>
-										</li>
-									</div>
+									<Card train={train} key={i} onClick={() => this.setSelectedTrain(train)} />
 								)
 							}
 						</Grid>
@@ -201,12 +184,6 @@ const device = {
 	desktop: `(min-width: ${size.desktop})`
 }
 
-const InfoIcon = styled.svg`
-	fill: #8e8e8e;
-	margin-right: 8px;
-	margin-top: -3px;
-`;
-
 const TrainButton = styled.button`
 	background: #6f2cac;
 	border: none;
@@ -218,98 +195,21 @@ const TrainButton = styled.button`
 	min-width: 130px;
 	outline: none;
 	padding: 10px 15px;
-	transition: 0.4s ease;
+	transition: background 0.4s ease;
+
+	&:active {
+		background: #4a137b;
+        transform: scale(0.99);
+    }
 
 	&:focus {
+		background: #4a137b;
 		border-color: #6f2cac;
 		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
 	}
 
 	&:hover {
 		cursor: pointer;
-	}
-`;
-const SearchContainer = styled.div`
-	background: white;
-	border-bottom: 1px solid #cecece;
-	padding: 15px 0;
-`;
-
-const SearchForm = styled.form`
-	align-items: flex-start;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-
-	@media ${device.tablet} {
-		align-items: center;
-		flex-direction: row;
-	}
-`;
-
-const SearchInput = styled.input`
-	border: 2px solid #cecece;
-	border-radius: 5px;
-	font-family: Comfortaa, sans-serif;
-	margin: 0 0 15px;
-	outline: none;
-	padding: 10px 18px;
-	transition: 0.4s ease;
-
-	&:focus {
-		border-color: #6f2cac;
-		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
-	}
-
-	@media ${device.tablet} {
-		margin: 0 10px;
-	}
-`;
-
-const SearchLabel = styled.label`
-	margin-bottom: 5px;
-
-	@media ${device.tablet} {
-		margin-bottom: 0;
-	}
-`;
-
-const SearchButton = styled.button`
-	border: 2px solid #cecece;
-	border-radius: 5px;
-	font-family: 'Comfortaa', sans-serif;
-	margin: 0 0 10px;
-	outline: none;
-	padding: 10px 18px;
-	transition: 0.4s ease;
-
-	&:hover {
-		background: #6f2cac;
-		color: #fff;
-		cursor: pointer;
-	}
-
-	&:focus {
-		border-color: #6f2cac;
-		box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
-	}
-
-	@media ${device.tablet} {
-		margin-bottom: 0;
-	}
-`;
-
-const InfoContainer = styled.div`
-	display: block;
-	list-style-type: none;
-	margin: 0 auto;
-	max-width: 1200px;
-	padding: 20px 0 0;
-
-	@media ${device.tablet} {
-		display: flex;
-		justify-content: space-between;
-		padding: 20px 0;
 	}
 `;
 
@@ -322,68 +222,6 @@ const Grid = styled.ul`
 	margin: 0 auto 40px;
 	max-width: 1200px;
 	padding-left: 0;
-`;
-
-const card = {
-	background: '#fff',
-	borderRadius: '18px',
-	boxShadow: "0 3px 13px -2px rgba(0,0,0,.15)",
-	display: 'flex',
-	flexDirection: 'column',
-}
-
-const cardUpper = {
-	padding: '1.3rem',
-	textAlign: 'left',
-}
-
-const cardMiddle = {
-	borderTop: '1px solid #f7f8f9',
-	display: 'flex',
-	justifyContent: 'space-between',
-	marginTop: 'auto',
-	padding: '0.4rem 1.5rem',
-}
-
-const cardLower = {
-	alignItems: 'center',
-	background: '#F7F8F9',
-	borderBottomLeftRadius: '18px',
-	borderBottomRightRadius: '18px',
-	display: 'flex',
-	justifyContent: 'space-between',
-	minHeight: '70px',
-	padding: '0 1.5rem'
-}
-
-const CardTwo = styled.div`
-	align-items: center;
-	background: #fff;
-	border-radius: 18px;
-	display: flex;
-	box-shadow: 0 3px 13px -2px rgba(0,0,0,.15);
-	margin-bottom: 15px;
-	min-width: 220px;
-	padding: 0.5rem;
-
-	&:nth-child(2) {
-		margin-left: 0;
-		margin-right: 0;
-
-		@media ${device.tablet} {
-			margin-left: 15px;
-			margin-right: 15px;
-		}
-	}
-
-	&:nth-child(3) {
-		flex: 1;
-	}
-
-	@media ${device.tablet} {
-		margin-bottom: 0;
-		padding: 0.3rem 1.5rem;
-	}
 `;
 
 const buttonContainer = {
