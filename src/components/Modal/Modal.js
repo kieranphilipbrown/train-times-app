@@ -59,7 +59,6 @@ const Modal = ({ showModal, destination_name, status, origin_name, expected_arri
         </StyledModal>
         }
     </>
-
 );
 
 export default Modal;
