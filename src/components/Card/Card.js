@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { ReactComponent as ClockIcon } from '../../assets/images/clock-icon.svg';
-import { ReactComponent as RightArrowIcon } from '../../assets/images/right-arrow-icon.svg';
 import { StyledCard, CardInner } from './Card.styles';
 
-const Card = ({ train }) => (
-    <StyledCard>
+const Card = ({ train, selectedTrain }) => (
+    <StyledCard onClick={() => selectedTrain(train)}>
         <CardInner>
             <p className="train-title">
                 {
@@ -35,7 +34,7 @@ const Card = ({ train }) => (
 					{train.status.toLowerCase()}
 				</span>
 			}
-            <RightArrowIcon />
+            <p className="more-info">More Info</p>
         </CardInner>
     </StyledCard>
 );

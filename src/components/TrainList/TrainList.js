@@ -121,7 +121,7 @@ class TrainList extends React.Component {
 						<Grid>
 							{trainList && trainList.length > 0 && !trainFetchError &&
 								trainList.map((train, i) =>
-									<Card train={train} key={i} onClick={() => this.setSelectedTrain(train)} />
+									<Card train={train} key={i} selectedTrain={this.setSelectedTrain} />
 								)
 							}
 						</Grid>

@@ -31,8 +31,8 @@ export const ModalClose = styled.button `
     height: 48px;
     justify-content: center;
     position: absolute;
-    right: 1.3rem;
-    top: 1.3rem;
+    right: 10px;
+    top: 10px;
     width: 48px;
 `;
 
@@ -55,7 +55,35 @@ export const ModalInner = styled.div `
 
 export const ModalUpper = styled.div `
     padding: 1.5rem;
+    position: relative;
     text-align: left;
+
+    .train-title {
+        font-weight: bold;
+        margin-right: 45px;
+        margin-top: 0;
+    }
+
+    .train-from {
+        color: #6e6e6e;
+        fontSize: 14px;
+        display: block;
+        margin-bottom: 15px;
+        margin-right: 45px;
+    }
+
+    .train-status {
+        font-size: 14px;
+        text-transform: capitalize;
+    }
+
+    .train-status--green {
+        color: #2e8212;
+    }
+
+    .train-status--red {
+        color: #a93a10;
+    }
 `;
 
 export const ModalMiddle = styled.div `

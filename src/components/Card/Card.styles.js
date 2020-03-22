@@ -25,6 +25,12 @@ export const StyledCard = styled.div `
         top: 36px;
         width: 50px;
     }
+
+    .more-info {
+        font-size: 14px;
+        text-decoration: underline;
+        margin-bottom: 0;
+    }
 `;
 
 export const CardInner = styled.div `
