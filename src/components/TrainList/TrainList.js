@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import InfoBox from '../InfoBox/InfoBox';
+import { Wrapper } from '../../assets/Styled/Utility/Utility';
 
 const buttonData = [
 	{
@@ -128,16 +130,19 @@ class TrainList extends React.Component {
 		return (
 			<>
 				<Loader showLoader={isLoading} />
-				<main className="main-content">
+				<main>
 					<div style={buttonContainer}>
 						{
 							buttonData.map((button, i) =>
-								<TrainButton key={`${button.id}-${i}`} id={button.id} data-des={button.destination} onClick={this.trainListCallback}><svg style={{width: "20px", verticalAlign: "middle", marginRight: "8px", marginTop: "-3px", fill: "#ffffff"}} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm2 0V6h5v4h-5zm3.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M0 0h24v24H0V0z" fill="none"/></svg>{button.label}</TrainButton>
+								<TrainButton key={`${button.id}-${i}`} id={button.id} data-des={button.destination} onClick={this.trainListCallback}>
+									<svg style={{width: "20px", verticalAlign: "middle", marginRight: "8px", marginTop: "-3px", fill: "#ffffff"}} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm2 0V6h5v4h-5zm3.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M0 0h24v24H0V0z" fill="none"/></svg>
+									{button.label}
+								</TrainButton>
 							)
 						}
 					</div>
 
-					<SearchContainer>
+					{/* <SearchContainer>
 						<div style={pageWidth}>
 							<SearchForm onSubmit={this.handleSubmit}>
 								<SearchLabel htmlFor="stationfrom">Where from?</SearchLabel>
@@ -148,17 +153,11 @@ class TrainList extends React.Component {
 								<SearchButton>Search</SearchButton>
 							</SearchForm>
 						</div>
-					</SearchContainer>
+					</SearchContainer> */}
 
 					<ErrorMessage showErrorMessage={trainFetchError} />
-
-					<div style={pageWidth}>
-						<InfoContainer>
-							<CardTwo><InfoIcon xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/><path d="M0 0h24v24H0z" fill="none"/></InfoIcon><p>{date}</p></CardTwo>
-							<CardTwo><InfoIcon xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></InfoIcon><p>{timeOfDay}</p></CardTwo>
-							<CardTwo><InfoIcon xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2.23l2-2H14l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm2 0V6h5v4h-5zm3.5 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M0 0h24v24H0V0z" fill="none"/></InfoIcon><p>From: {stationName}</p></CardTwo>
-						</InfoContainer>
-
+					<InfoBox station={stationName} />
+					<Wrapper>
 						<Grid>
 							{trainList && trainList.length > 0 && !trainFetchError &&
 								trainList.map((train, i) =>
@@ -184,12 +183,8 @@ class TrainList extends React.Component {
 								)
 							}
 						</Grid>
-					</div>
-
-
-						<Modal { ...selectedTrain } showModal={showModal} toggleModal={this.toggleModal} />
-					
-
+					</Wrapper>
+					<Modal { ...selectedTrain } showModal={showModal} toggleModal={this.toggleModal} />
 				</main>
 			</>
 		);
@@ -204,13 +199,6 @@ const size = {
 const device = {
 	tablet: `(min-width: ${size.tablet})`,
 	desktop: `(min-width: ${size.desktop})`
-}
-
-const pageWidth = {
-	margin: "0 auto",
-	maxWidth: "1200px",
-	paddingLeft: "5%",
-	paddingRight: "5%"
 }
 
 const InfoIcon = styled.svg`
