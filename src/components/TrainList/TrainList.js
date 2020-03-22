@@ -105,7 +105,7 @@ class TrainList extends React.Component {
 			<>
 				<Loader showLoader={isLoading} />
 				<main>
-					<div style={buttonContainer}>
+					<ButtonContainer>
 						{
 							buttonData.map((button, i) =>
 								<TrainButton key={`${button.id}-${i}`} id={button.id} data-des={button.destination} onClick={this.trainListCallback}>
@@ -114,7 +114,7 @@ class TrainList extends React.Component {
 								</TrainButton>
 							)
 						}
-					</div>
+					</ButtonContainer>
 					<ErrorMessage showErrorMessage={trainFetchError} />
 					<InfoBox station={stationName} />
 					<Wrapper>
@@ -143,6 +143,18 @@ const device = {
 	desktop: `(min-width: ${size.desktop})`
 }
 
+const ButtonContainer = styled.div`
+	background: #ffffff;
+	border-bottom: 1px solid #e9e9e9;
+	display: flex;
+	justify-content: space-between;
+	overflow: auto;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 15px;
+	padding-top: 15px;
+`;
+
 const TrainButton = styled.button`
 	background: #6f2cac;
 	border: none;
@@ -150,11 +162,33 @@ const TrainButton = styled.button`
 	color: #fff;
 	font-family: Comfortaa;
 	font-size: 12px;
-	margin: 0 10px;
+	margin: 0 5% 0 0;
 	min-width: 130px;
 	outline: none;
 	padding: 10px 15px;
+	position: relative;
 	transition: background 0.4s ease;
+
+	@include tablet {
+		margin: 0;
+	}
+
+	&:last-of-type {
+		&:after {
+			background: white;
+			content: '';
+			height: 100%;
+			margin-left: 10px;
+			position: absolute;
+			right: -15px;
+			top: 0;
+			width: 15px;
+
+			@include tablet {
+				content: none;
+			}
+		}
+	}
 
 	&:active {
 		background: #4a137b;
@@ -190,18 +224,6 @@ const Grid = styled.ul`
 	max-width: 1200px;
 	padding-left: 0;
 `;
-
-const buttonContainer = {
-	background: "white",
-	borderBottom: "1px solid #cecece",
-	display: "flex",
-	justifyContent: "space-between",
-	overflow: "auto",
-	paddingLeft: "5%",
-	paddingRight: "5%",
-	paddingBottom: "20px",
-	paddingTop: "20px",
-}
 
 export default TrainList;
 

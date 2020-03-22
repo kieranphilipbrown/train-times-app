@@ -54,7 +54,7 @@ export const ModalInner = styled.div `
 `;
 
 export const ModalUpper = styled.div `
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 0;
     position: relative;
     text-align: left;
 
@@ -91,7 +91,7 @@ export const ModalMiddle = styled.div `
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    padding: 0.4rem 1.5rem;
+    padding: 0 1.5rem;
 `;
 
 export const ModalLower = styled.div `
