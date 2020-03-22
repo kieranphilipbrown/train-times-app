@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Modal from '../Modal/Modal';
 import Loader from '../Loader/Loader';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const buttonData = [
 	{
@@ -36,7 +37,7 @@ class TrainList extends React.Component {
 		trainList: [],
 		stationFrom: '',
 		stationTo: '',
-		trainFetchError: false,
+		trainFetchError: true,
 		isLoading: false,
 		showModal: false,
 		selectedTrain: {},
@@ -149,13 +150,7 @@ class TrainList extends React.Component {
 						</div>
 					</SearchContainer> */}
 
-					{
-						trainFetchError &&
-						// Component 
-						<div style={pageWidth}>
-							<ErrorMessage><ErrorMessageIcon xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/><path d="M0 0h24v24H0z" fill="none"/></ErrorMessageIcon>No results for that search. Please try again.</ErrorMessage>
-						</div>
-					}
+					<ErrorMessage showErrorMessage={trainFetchError} />
 
 					<div style={pageWidth}>
 						<InfoContainer>
@@ -221,23 +216,7 @@ const pageWidth = {
 const InfoIcon = styled.svg`
 	fill: #8e8e8e;
 	margin-right: 8px;
-	margin-top: -3px; 
-`;
-
-const ErrorMessage = styled.p`
-	align-items: center;
-	background: white;
-	border-radius: 18px;
-	box-shadow: 0 3px 13px -2px rgba(0,0,0,.15);
-	display: flex;
-    justify-content: center;
-	padding: 0.7rem;
-	margin-bottom: 0;
-`;
-
-const ErrorMessageIcon = styled.svg`
-	fill: red;
-	margin-right: 8px;
+	margin-top: -3px;
 `;
 
 const TrainButton = styled.button`
