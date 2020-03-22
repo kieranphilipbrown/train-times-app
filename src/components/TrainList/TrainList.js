@@ -37,7 +37,7 @@ class TrainList extends React.Component {
 		trainList: [],
 		stationFrom: '',
 		stationTo: '',
-		trainFetchError: true,
+		trainFetchError: false,
 		isLoading: false,
 		showModal: false,
 		selectedTrain: {},
@@ -137,7 +137,7 @@ class TrainList extends React.Component {
 						}
 					</div>
 
-					{/* <SearchContainer>
+					<SearchContainer>
 						<div style={pageWidth}>
 							<SearchForm onSubmit={this.handleSubmit}>
 								<SearchLabel htmlFor="stationfrom">Where from?</SearchLabel>
@@ -148,7 +148,7 @@ class TrainList extends React.Component {
 								<SearchButton>Search</SearchButton>
 							</SearchForm>
 						</div>
-					</SearchContainer> */}
+					</SearchContainer>
 
 					<ErrorMessage showErrorMessage={trainFetchError} />
 
