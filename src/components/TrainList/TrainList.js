@@ -28,7 +28,7 @@ const buttonData = [
 	{
 		id: 'MAN',
 		destination: 'NLW',
-		label: 'Picadilly to Newton-le-Willows',
+		label: 'Piccadilly to Newton-le-Willows',
 	},
 ];
 
