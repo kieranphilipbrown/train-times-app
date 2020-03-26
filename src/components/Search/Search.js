@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchContainer, SearchForm, SearchLabel, SearchInput, SearchButton, SearchInputResult } from './Search.styles';
+import { SearchContainer, SearchForm, SearchLabel, SearchInputContainer, SearchInput, SearchButton, SearchInputResult } from './Search.styles';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
 import stations from '../../assets/data/stations.json';
 
@@ -32,9 +32,9 @@ class Search extends React.Component {
         this.setState({
             [e.target.name]: e.target.value,
         });
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const matchArray = this.findMatches(e.target.value, stations)
-        console.log(matchArray);
+        // console.log(matchArray);
 
         if (inputType === "from") {
             this.setState({
@@ -70,9 +70,9 @@ class Search extends React.Component {
         return (
             <SearchContainer>
                 <Wrapper>
-                    <SearchForm onSubmit={(e) => this.handleSubmit(e)} autocomplete={'off'}>
+                    <SearchForm onSubmit={(e) => this.handleSubmit(e)} autoComplete="off">
                         <SearchLabel htmlFor="stationfrom">Where from?</SearchLabel>
-                        <div style={{position: "relative"}}>
+                        <SearchInputContainer>
                             <SearchInput
                                 id={'stationfrom'}
                                 name={'stationFrom'}
@@ -92,9 +92,8 @@ class Search extends React.Component {
                                     }
                                 </SearchInputResult>
                             }
-                        </div>
-
-                        <div style={{position: "relative"}}>
+                        </SearchInputContainer>
+                        <SearchInputContainer>
                             <SearchInput
                                 id={'stationto'}
                                 name={'stationTo'}
@@ -114,7 +113,7 @@ class Search extends React.Component {
                                     }
                                 </SearchInputResult>
                             }
-                        </div>
+                        </SearchInputContainer>
                         <SearchButton>Search</SearchButton>
                     </SearchForm>
                 </Wrapper>
@@ -124,4 +123,3 @@ class Search extends React.Component {
 }
 
 export default Search;
-

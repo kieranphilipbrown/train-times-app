@@ -80,6 +80,10 @@ export const SearchButton = styled.button`
 	}
 `;
 
+export const SearchInputContainer = styled.div`
+    position: relative;
+`;
+
 export const SearchInputResult = styled.ul`
     background: #ffffff;
     border: 2px solid #cecece;
@@ -87,7 +91,7 @@ export const SearchInputResult = styled.ul`
     box-sizing: border-box;
     color: #565656;
     font-size: 14px;
-    left: -400px;
+    left: 0;
     list-style-type: none;
     margin: 0 10px;
     max-height: 200px;
