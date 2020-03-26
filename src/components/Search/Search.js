@@ -6,7 +6,9 @@ import stations from '../../assets/data/stations.json';
 class Search extends React.Component {
     state = {
         stationFrom: '',
+        stationFromCode: '',
         stationTo: '',
+        stationToCode: '',
         stationList: stations,
         searchResults: '',
     }
@@ -35,27 +37,22 @@ class Search extends React.Component {
 
         this.setState({
             searchResults: matchArray
-        })
-
-        // const returnedHtml = matchArray.map(station => {
-        //     return `
-        //         ${station.stationName}, ${station.crsCode}
-        //     `
-        // });
-        // this.setState({
-        //     returnedHtml: returnedHtml
-        // })
-        // console.log(returnedHtml)
+        });
     }
 
-    updateInputField = e => {
-        console.log(e.target);
-        console.log(e.target.dataset)
-        console.log(e.target.dataset.station)
-        console.log(e.target.dataset.code)
-
+    updateFromInputField = e => {
         this.setState({
-            stationFrom: e.target.dataset.station
+            stationFrom: e.target.dataset.station,
+            stationFromCode: e.target.dataset.code,
+            searchResults: false
+        })
+    }
+
+    updateToInputField = e => {
+        this.setState({
+            stationTo: e.target.dataset.station,
+            stationToCode: e.target.dataset.code,
+            searchResults: false
         })
     }
 
@@ -79,15 +76,16 @@ class Search extends React.Component {
                                 <SearchInputResult>
                                     {
                                         searchResults.map((result, i) =>
-                                            <li key={i} onClick={(e) => this.updateInputField(e, result)}>
-                                                <span data-station={result.stationName}>{result.stationName}</span>, <span data-code={result.crsCode}>{result.crsCode}</span>
+                                            <li key={i} onClick={(e) => this.updateFromInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
+                                                {result.stationName}, {result.crsCode}
                                             </li>
                                         )
                                     }
                                 </SearchInputResult>
                             }
                         </div>
-                            {/* <SearchLabel htmlFor="stationto">Where to?</SearchLabel>
+
+                        <div style={{position: "relative"}}>
                             <SearchInput
                                 id={'stationto'}
                                 name={'stationTo'}
@@ -95,11 +93,19 @@ class Search extends React.Component {
                                 placeholder={'Station Name'}
                                 value={this.state.stationTo}
                                 onChange={(e) => this.displayMatches(e)}
-                            /> */}
-                            {/* <SearchInputResult>
-                                <span>Suggestions:</span>
-                                {this.state.returnedHtml}
-                            </SearchInputResult> */}
+                            />
+                            {searchResults &&
+                                <SearchInputResult>
+                                    {
+                                        searchResults.map((result, i) =>
+                                            <li key={i} onClick={(e) => this.updateToInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
+                                                {result.stationName}, {result.crsCode}
+                                            </li>
+                                        )
+                                    }
+                                </SearchInputResult>
+                            }
+                        </div>
                         <SearchButton>Search</SearchButton>
                     </SearchForm>
                 </Wrapper>

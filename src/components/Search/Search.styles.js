@@ -85,12 +85,13 @@ export const SearchInputResult = styled.ul`
     border: 2px solid #cecece;
     border-radius: 5px;
     box-sizing: border-box;
-    color: #8a8a8a;
+    color: #565656;
     font-size: 14px;
-    height: auto;
-    left: -300px;
+    height: 200px;
+    left: -400px;
     list-style-type: none;
     margin: 0 10px;
+    overflow: auto;
     padding-left: 0;
     position: absolute;
     text-align: left;
@@ -102,6 +103,7 @@ export const SearchInputResult = styled.ul`
 
         &:hover {
             background: #f6f2ed;
+            cursor: pointer;
         }
     }
 `;
