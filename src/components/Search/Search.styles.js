@@ -103,6 +103,10 @@ export const SearchInputResult = styled.ul`
     width: 250px;
     z-index: 5;
 
+    @media ${device.tablet} {
+		margin: 0 10px;
+	}
+
     li {
         padding: 10px 20px;
 
