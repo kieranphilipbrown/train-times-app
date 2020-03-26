@@ -93,6 +93,7 @@ class Search extends React.Component {
                                 </SearchInputResult>
                             }
                         </SearchInputContainer>
+                        <SearchLabel htmlFor="stationfrom">Where to?</SearchLabel>
                         <SearchInputContainer>
                             <SearchInput
                                 id={'stationto'}
