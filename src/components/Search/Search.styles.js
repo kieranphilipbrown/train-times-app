@@ -101,6 +101,7 @@ export const SearchInputResult = styled.ul`
     text-align: left;
     top: 40px;
     width: 250px;
+    z-index: 5;
 
     li {
         padding: 10px 20px;

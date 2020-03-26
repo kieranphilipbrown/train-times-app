@@ -8,7 +8,7 @@ import InfoBox from '../InfoBox/InfoBox';
 import Card from '../Card/Card';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
 import { ReactComponent as TrainIcon } from '../../assets/images/train-icon.svg';
-import Form from '../Search/Search';
+import Search from '../Search/Search';
 
 const buttonData = [
 	{
@@ -58,8 +58,6 @@ class TrainList extends React.Component {
 			})
 			.then((data) => {
 				this.setState({
-					date: data.date,
-					timeOfDay: data.time_of_day,
 					stationName: data.station_name,
 					trainList: data.departures.all,
 					trainFetchError: false,
@@ -100,8 +98,31 @@ class TrainList extends React.Component {
 		});
 	}
 
-	onSubmit = fields => {
+	searchSubmit = fields => {
 		console.log('trainlist componnent: ', fields);
+		console.log(fields.stationFromCode);
+		console.log(fields.stationToCode);
+		this.setState({
+			isLoading: true,
+		});
+		fetch(`https://transportapi.com/v3/uk/train/station/${fields.stationFromCode}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${fields.stationToCode}&darwin=true&train_status=passenger`)
+			.then((response) => {
+				return response.json();
+			})
+			.then((data) => {
+				this.setState({
+					stationName: data.station_name,
+					trainList: data.departures.all,
+					trainFetchError: false,
+					isLoading: false,
+				})
+			}).catch((error) => {
+				console.log('Error:', error);
+				this.setState({
+					trainFetchError: true,
+					isLoading: false,
+				});
+			});
 	}
 
 	render() {
@@ -121,7 +142,7 @@ class TrainList extends React.Component {
 						}
 					</ButtonContainer>
 					<ErrorMessage showErrorMessage={trainFetchError} />
-					<Form onSubmit={fields => this.onSubmit(fields)} />
+					<Search onSubmit={fields => this.searchSubmit(fields)} />
 					<InfoBox station={stationName} />
 					<Wrapper>
 						<Grid>
