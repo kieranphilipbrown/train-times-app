@@ -8,6 +8,7 @@ import InfoBox from '../InfoBox/InfoBox';
 import Card from '../Card/Card';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
 import { ReactComponent as TrainIcon } from '../../assets/images/train-icon.svg';
+import Form from '../Search/Search';
 
 const buttonData = [
 	{
@@ -99,6 +100,10 @@ class TrainList extends React.Component {
 		});
 	}
 
+	onSubmit = fields => {
+		console.log('trainlist componnent: ', fields);
+	}
+
 	render() {
 		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain } = this.state;
 		return (
@@ -116,6 +121,7 @@ class TrainList extends React.Component {
 						}
 					</ButtonContainer>
 					<ErrorMessage showErrorMessage={trainFetchError} />
+					<Form onSubmit={fields => this.onSubmit(fields)} />
 					<InfoBox station={stationName} />
 					<Wrapper>
 						<Grid>
