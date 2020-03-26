@@ -80,13 +80,28 @@ export const SearchButton = styled.button`
 	}
 `;
 
-export const SearchInputResult = styled.div`
+export const SearchInputResult = styled.ul`
     background: #ffffff;
     border: 2px solid #cecece;
     border-radius: 5px;
+    box-sizing: border-box;
+    color: #8a8a8a;
+    font-size: 14px;
     height: auto;
-    left: 0;
-    padding: 5px;
+    left: -300px;
+    list-style-type: none;
+    margin: 0 10px;
+    padding-left: 0;
     position: absolute;
-    width: 100%;
+    text-align: left;
+    top: 40px;
+    width: 250px;
+
+    li {
+        padding: 10px 20px;
+
+        &:hover {
+            background: #f6f2ed;
+        }
+    }
 `;
