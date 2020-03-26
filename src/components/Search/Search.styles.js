@@ -93,7 +93,7 @@ export const SearchInputResult = styled.ul`
     font-size: 14px;
     left: 0;
     list-style-type: none;
-    margin: 0 10px;
+    margin: 0;
     max-height: 200px;
     overflow: auto;
     padding-left: 0;
