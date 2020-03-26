@@ -87,10 +87,10 @@ export const SearchInputResult = styled.ul`
     box-sizing: border-box;
     color: #565656;
     font-size: 14px;
-    height: 200px;
     left: -400px;
     list-style-type: none;
     margin: 0 10px;
+    max-height: 200px;
     overflow: auto;
     padding-left: 0;
     position: absolute;

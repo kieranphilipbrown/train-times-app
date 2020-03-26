@@ -10,7 +10,8 @@ class Search extends React.Component {
         stationTo: '',
         stationToCode: '',
         stationList: stations,
-        searchResults: '',
+        searchResultsFrom: '',
+        searchResultsTo: '',
     }
 
     handleSubmit = (e) => {
@@ -27,7 +28,7 @@ class Search extends React.Component {
         });
     }
 
-    displayMatches = (e) => {
+    displayMatches = (e, inputType) => {
         this.setState({
             [e.target.name]: e.target.value,
         });
@@ -35,16 +36,24 @@ class Search extends React.Component {
         const matchArray = this.findMatches(e.target.value, stations)
         console.log(matchArray);
 
-        this.setState({
-            searchResults: matchArray
-        });
+        if (inputType === "from") {
+            this.setState({
+                searchResultsFrom: matchArray
+            });
+        }
+        if (inputType === "to") {
+            this.setState({
+                searchResultsTo: matchArray
+            });
+        }
+
     }
 
     updateFromInputField = e => {
         this.setState({
             stationFrom: e.target.dataset.station,
             stationFromCode: e.target.dataset.code,
-            searchResults: false
+            searchResultsFrom: false
         })
     }
 
@@ -52,12 +61,12 @@ class Search extends React.Component {
         this.setState({
             stationTo: e.target.dataset.station,
             stationToCode: e.target.dataset.code,
-            searchResults: false
+            searchResultsTo: false
         })
     }
 
     render() {
-        const searchResults = this.state.searchResults;
+        const { searchResultsFrom, searchResultsTo } = this.state;
         return (
             <SearchContainer>
                 <Wrapper>
@@ -70,12 +79,12 @@ class Search extends React.Component {
                                 type={'text'}
                                 placeholder={'Station Name'}
                                 value={this.state.stationFrom}
-                                onChange={(e) => this.displayMatches(e)}
+                                onChange={(e) => this.displayMatches(e, "from")}
                             />
-                            {searchResults &&
+                            {searchResultsFrom &&
                                 <SearchInputResult>
                                     {
-                                        searchResults.map((result, i) =>
+                                        searchResultsFrom.map((result, i) =>
                                             <li key={i} onClick={(e) => this.updateFromInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
                                                 {result.stationName}, {result.crsCode}
                                             </li>
@@ -92,12 +101,12 @@ class Search extends React.Component {
                                 type={'text'}
                                 placeholder={'Station Name'}
                                 value={this.state.stationTo}
-                                onChange={(e) => this.displayMatches(e)}
+                                onChange={(e) => this.displayMatches(e, "to")}
                             />
-                            {searchResults &&
+                            {searchResultsTo &&
                                 <SearchInputResult>
                                     {
-                                        searchResults.map((result, i) =>
+                                        searchResultsTo.map((result, i) =>
                                             <li key={i} onClick={(e) => this.updateToInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
                                                 {result.stationName}, {result.crsCode}
                                             </li>
