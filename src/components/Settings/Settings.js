@@ -7,7 +7,7 @@ const Settings = ({ showSettingsMenu, toggleSettingsMenu }) => (
         {
             showSettingsMenu &&
             <StyledSettingsContainer>
-                <SettingsContainerLeft>
+                <SettingsContainerLeft showSettingsMenu>
                     <SettingsCloseIcon onClick={toggleSettingsMenu} />
                     <h2>Settings Menu</h2>
                     <p>Update to/from train stations (quick access buttons):</p>

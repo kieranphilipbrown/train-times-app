@@ -19,7 +19,7 @@ export const SettingsContainerLeft = styled.div`
     background: #ffffff;
     border-right: 1px solid #c8c8c8;
     height: 100%;
-	left: 0;
+	left: ${state => state.showSettingsMenu ? "0" : "-320px"};
 	max-width: 300px;
 	padding: 20px;
 	position: absolute;
@@ -28,7 +28,7 @@ export const SettingsContainerLeft = styled.div`
 	-webkit-transition: left 0.4s ease;
     transition: left 0.4s ease;
 	z-index: 8;
-	
+
 	svg {
 		position: absolute;
 		right: 15px;
@@ -52,11 +52,18 @@ export const SettingsContainerRight = styled.div`
 `;
 
 export const StationContainer = styled.div`
-	border: 1px solid #c8c8c8;
+	border: 2px solid #c8c8c8;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 20px;
 
 	p {
 		margin-top: 0;
+	}
+
+	input {
+		border: 2px solid #c8c8c8;
+		border-radius: 5px;
+		margin-bottom: 15px;
+		padding: 10px 20px;
 	}
 `;

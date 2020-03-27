@@ -185,7 +185,7 @@ const device = {
 
 const SettingsButton = styled.button`
 	background: transparent;
-	border: 1px solid #c8c8c8;
+	border: 2px solid #c8c8c8;
 	border-radius: 5px;
 	margin-right: 5%;
 	padding: 10px;
