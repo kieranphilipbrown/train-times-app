@@ -51,3 +51,12 @@ export const SettingsContainerRight = styled.div`
 	z-index: 8;
 `;
 
+export const StationContainer = styled.div`
+	border: 1px solid #c8c8c8;
+	border-radius: 5px;
+	padding: 10px;
+
+	p {
+		margin-top: 0;
+	}
+`;

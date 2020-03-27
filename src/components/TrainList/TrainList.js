@@ -190,6 +190,10 @@ const SettingsButton = styled.button`
 	margin-right: 5%;
 	padding: 10px;
 
+	&:hover {
+		cursor: pointer;
+	}
+
 	svg {
 		fill: #d5d5d5;
 	}
