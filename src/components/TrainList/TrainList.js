@@ -7,8 +7,10 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import InfoBox from '../InfoBox/InfoBox';
 import Card from '../Card/Card';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
-import { ReactComponent as TrainIcon } from '../../assets/images/train-icon.svg';
 import Search from '../Search/Search';
+import Settings from '../Settings/Settings';
+import { ReactComponent as TrainIcon } from '../../assets/images/train-icon.svg';
+import { ReactComponent as SettingsIcon } from '../../assets/images/settings-icon.svg';
 
 const buttonData = [
 	{
@@ -44,6 +46,7 @@ class TrainList extends React.Component {
 		isLoading: false,
 		showModal: false,
 		selectedTrain: {},
+		showSettingsMenu: false,
 	}
 
 	trainListCallback = (e) => {
@@ -83,6 +86,12 @@ class TrainList extends React.Component {
 		console.log(event);
 		this.setState({
 			showModal: !this.state.showModal,
+		});
+	}
+
+	toggleSettingsMenu = (event) => {
+		this.setState({
+			showSettingsMenu: !this.state.showSettingsMenu,
 		});
 	}
 
@@ -126,12 +135,16 @@ class TrainList extends React.Component {
 	}
 
 	render() {
-		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain } = this.state;
+		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain, showSettingsMenu } = this.state;
 		return (
 			<>
 				<Loader showLoader={isLoading} />
+				<Settings showSettingsMenu={showSettingsMenu} toggleSettingsMenu={() => this.toggleSettingsMenu()} />
 				<main>
 					<ButtonContainer>
+						<SettingsButton onClick={this.toggleSettingsMenu}>
+							<SettingsIcon />
+						</SettingsButton>
 						{
 							buttonData.map((button, i) =>
 								<TrainButton key={`${button.id}-${i}`} id={button.id} data-des={button.destination} onClick={this.trainListCallback}>
@@ -169,6 +182,18 @@ const device = {
 	tablet: `(min-width: ${size.tablet})`,
 	desktop: `(min-width: ${size.desktop})`
 }
+
+const SettingsButton = styled.button`
+	background: transparent;
+	border: 1px solid #c8c8c8;
+	border-radius: 5px;
+	margin-right: 5%;
+	padding: 10px;
+
+	svg {
+		fill: #d5d5d5;
+	}
+`;
 
 const ButtonContainer = styled.div`
 	background: #ffffff;
