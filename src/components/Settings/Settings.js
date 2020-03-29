@@ -15,7 +15,9 @@ const Settings = ({ showSettingsMenu, toggleSettingsMenu }) => (
                 <input placeholder="Station from" />
             </StationContainer>
         </SettingsContainerLeft>
-        <SettingsContainerRight onClick={toggleSettingsMenu} showSettingsMenu={showSettingsMenu}></SettingsContainerRight>
+        <SettingsContainerRight onClick={toggleSettingsMenu} showSettingsMenu={showSettingsMenu}>
+            <span>Click to close</span>
+        </SettingsContainerRight>
     </StyledSettingsContainer>
 );
 

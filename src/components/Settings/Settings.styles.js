@@ -50,14 +50,22 @@ export const SettingsContainerLeft = styled.div`
 `;
 
 export const SettingsContainerRight = styled.div`
+	align-items: center;
 	background: #000;
+	display: flex;
 	height: 100%;
+	justify-content: center;
 	right: 0;
 	opacity: 0.6;
 	position: absolute;
 	transition: 0.4s ease;
 	width: ${props => props.showSettingsMenu ? "calc(100% - 400px)" : "0"};
 	z-index: 8;
+
+	span {
+		color: #ffffff;
+		display: ${props => props.showSettingsMenu ? "block" : "none"};
+	}
 `;
 
 export const StationContainer = styled.div`

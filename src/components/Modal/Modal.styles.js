@@ -59,6 +59,7 @@ export const ModalUpper = styled.div `
     text-align: left;
 
     .train-title {
+        font-size: 18px;
         font-weight: bold;
         margin-bottom: 15px;
         margin-right: 45px;
