@@ -189,12 +189,13 @@ const device = {
 
 const SettingsButton = styled.button`
 	background: transparent;
-	border: 2px solid #c8c8c8;
+	border: 2px solid transparent;
 	border-radius: 5px;
 	margin-right: 5%;
 	padding: 10px;
 
 	&:hover {
+		border: 2px solid #c8c8c8;
 		cursor: pointer;
 	}
 

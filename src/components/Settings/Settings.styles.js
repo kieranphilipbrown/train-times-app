@@ -17,16 +17,17 @@ export const StyledSettingsContainer = styled.div`
 
 export const SettingsContainerLeft = styled.div`
     background: #ffffff;
-    border-right: 1px solid #c8c8c8;
     height: 100%;
-	left: ${state => state.showSettingsMenu ? "0" : "-320px"};
-	max-width: 300px;
+	left: 0;
+	max-width: 400px;
 	padding: 20px;
 	position: absolute;
 	text-align: left;
     top: 0;
-	-webkit-transition: left 0.4s ease;
-    transition: left 0.4s ease;
+	-webkit-transition: transform 0.4s ease;
+	transition: transform 0.4s ease;
+	transform: ${props => props.showSettingsMenu ? "translate(0, 0)" : "translate(-450px, 0)"};
+	width: 400px;
 	z-index: 8;
 
 	svg {
@@ -38,6 +39,14 @@ export const SettingsContainerLeft = styled.div`
 			cursor: pointer;
 		}
 	}
+
+	h2 {
+		margin-bottom: 30px;
+	}
+
+	p {
+		margin-bottom: 15px;
+	}
 `;
 
 export const SettingsContainerRight = styled.div`
@@ -47,14 +56,13 @@ export const SettingsContainerRight = styled.div`
 	opacity: 0.6;
 	position: absolute;
 	transition: 0.4s ease;
-	width: calc(100% - 300px);
+	width: ${props => props.showSettingsMenu ? "calc(100% - 400px)" : "0"};
 	z-index: 8;
 `;
 
 export const StationContainer = styled.div`
-	border: 2px solid #c8c8c8;
 	border-radius: 5px;
-	padding: 20px;
+	padding: 20px 0;
 
 	p {
 		margin-top: 0;
