@@ -15,7 +15,6 @@ class Settings extends React.Component {
         settingsStationFrom: '',
         settingsSearchFrom: '',
         stationFromCode: '',
-        cookieFrom: '',
     }
 
     handleSetStationsSubmit = (e) => {
@@ -23,7 +22,7 @@ class Settings extends React.Component {
         console.log('set stations form submitted');
         console.log(this.state)
 
-        this.props.cookies.set('cookieFromCode', this.state.stationFromCode, { path: '/' })
+        this.props.cookies.set('cookieFromCode', this.state.stationFromCode, { path: '/', maxAge: 2592000 }) // expires in 30 days
     }
 
     findMatches = (wordToMatch, stations) => {
