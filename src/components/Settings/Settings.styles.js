@@ -51,7 +51,7 @@ export const SettingsContainerLeft = styled.div`
 
 export const SettingsContainerRight = styled.div`
 	align-items: center;
-	background: #000;
+	background: #0000009a;
 	display: flex;
 	height: 100%;
 	justify-content: center;
