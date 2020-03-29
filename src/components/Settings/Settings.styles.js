@@ -27,8 +27,13 @@ export const SettingsContainerLeft = styled.div`
 	-webkit-transition: transform 0.4s ease;
 	transition: transform 0.4s ease;
 	transform: ${props => props.showSettingsMenu ? "translate(0, 0)" : "translate(-450px, 0)"};
-	width: 400px;
-	z-index: 8;
+	width: 90%;
+	z-index: 9;
+
+	@media ${device.tablet} {
+		max-width: 400px;
+		width: 400px;
+	}
 
 	svg {
 		position: absolute;
@@ -47,6 +52,11 @@ export const SettingsContainerLeft = styled.div`
 	p {
 		margin-bottom: 15px;
 	}
+
+	label {
+		display: block;
+		margin-bottom: 5px;
+	}
 `;
 
 export const SettingsContainerRight = styled.div`
@@ -56,10 +66,10 @@ export const SettingsContainerRight = styled.div`
 	height: 100%;
 	justify-content: center;
 	right: 0;
-	opacity: 0.6;
+	opacity: ${props => props.showSettingsMenu ? "1" : "0"};
 	position: absolute;
-	transition: 0.4s ease;
-	width: ${props => props.showSettingsMenu ? "calc(100% - 400px)" : "0"};
+	transition: opacity 0.4s ease;
+	width: ${props => props.showSettingsMenu ? "100%" : "0"};
 	z-index: 8;
 
 	span {

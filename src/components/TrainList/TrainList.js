@@ -11,7 +11,6 @@ import Search from '../Search/Search';
 import Settings from '../Settings/Settings';
 import { ReactComponent as TrainIcon } from '../../assets/images/train-icon.svg';
 import { ReactComponent as SettingsIcon } from '../../assets/images/settings-icon.svg';
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const buttonData = [
 	{
@@ -86,8 +85,6 @@ class TrainList extends React.Component {
 
 	toggleModal = (event) => {
 		console.log(event);
-		this.targetElement = document.querySelector('#modal');
-		disableBodyScroll(this.targetElement);
 		this.setState({
 			showModal: !this.state.showModal,
 		});
