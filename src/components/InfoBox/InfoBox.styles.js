@@ -12,6 +12,7 @@ export const InfoBoxInner = styled.div `
     display: flex;
     justify-content: flex-start;
     margin-bottom: 0;
+    padding: 10px 0;
 
     svg {
         margin-right: 8px;
