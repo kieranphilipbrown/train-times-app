@@ -93,3 +93,25 @@ export const StationContainer = styled.div`
 		padding: 10px 20px;
 	}
 `;
+
+export const SettingsSearchResults = styled.div`
+	background: #ffffff;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #565656;
+    font-size: 14px;
+    list-style-type: none;
+	margin: 0;
+	margin-top: -17px;
+    max-height: 200px;
+    overflow: auto;
+    padding-left: 0;
+    text-align: left;
+    width: 250px;
+	z-index: 5;
+
+	li {
+		padding: 10px 20px;
+	}
+`;

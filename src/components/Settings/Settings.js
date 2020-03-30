@@ -1,6 +1,6 @@
 import React from 'react';
 import stations from '../../assets/data/stations.json';
-import { StyledSettingsContainer, SettingsContainerLeft, SettingsContainerRight, StationContainer } from './Settings.styles';
+import { StyledSettingsContainer, SettingsContainerLeft, SettingsContainerRight, StationContainer, SettingsSearchResults } from './Settings.styles';
 import { ReactComponent as SettingsCloseIcon } from '../../assets/images/modal-close-icon.svg';
 import { withCookies } from 'react-cookie';
 
@@ -83,8 +83,7 @@ class Settings extends React.Component {
                     <p>Quick access buttons:</p>
                     <StationContainer>
                         <form onSubmit={(e) => this.handleSetStationsSubmit(e)} autoComplete="off">
-                            {/* From input */}
-                            <div>
+                            <>
                                 <label htmlFor="stationFrom">Station from:</label>
                                 <input
                                     id={'settingsStationFrom'}
@@ -96,7 +95,7 @@ class Settings extends React.Component {
                                 />
                                 {
                                     settingsSearchFrom &&
-                                    <div style={{background: "#f9f9f9", padding: "5px"}}>
+                                    <SettingsSearchResults>
                                         {
                                             settingsSearchFrom.map((result, i) =>
                                                 <li key={i} onClick={(e) => this.updateFromInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
@@ -104,11 +103,10 @@ class Settings extends React.Component {
                                                 </li>
                                             )
                                         }
-                                    </div>
+                                    </SettingsSearchResults>
                                 }
-                            </div>
-                            {/* To input */}
-                            <div>
+                            </>
+                            <>
                                 <label htmlFor="stationFrom">Station to:</label>
                                 <input
                                     id={'settingsStationTo'}
@@ -120,7 +118,7 @@ class Settings extends React.Component {
                                 />
                                 {
                                     settingsSearchTo &&
-                                    <div style={{background: "#f9f9f9", padding: "5px"}}>
+                                    <SettingsSearchResults>
                                         {
                                             settingsSearchTo.map((result, i) =>
                                                 <li key={i} onClick={(e) => this.updateToInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
@@ -128,9 +126,9 @@ class Settings extends React.Component {
                                                 </li>
                                             )
                                         }
-                                    </div>
+                                    </SettingsSearchResults>
                                 }
-                            </div>
+                            </>
                             <input type="submit" value="Set stations" />
                         </form>
                     </StationContainer>
