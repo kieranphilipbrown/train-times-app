@@ -51,7 +51,7 @@ class Search extends React.Component {
             this.setState({
                 searchResultsFrom: false,
                 searchResultsTo: false,
-            })
+            });
         }
     }
 

@@ -15,6 +15,9 @@ class Settings extends React.Component {
         settingsStationFrom: '',
         settingsSearchFrom: '',
         stationFromCode: '',
+        settingsStationTo: '',
+        settingsSearchTo: '',
+        stationToCode: '',
     }
 
     handleSetStationsSubmit = (e) => {
@@ -23,6 +26,7 @@ class Settings extends React.Component {
         console.log(this.state)
 
         this.props.cookies.set('cookieFromCode', this.state.stationFromCode, { path: '/', maxAge: 2592000 }) // expires in 30 days
+        this.props.cookies.set('cookieToCode', this.state.stationToCode, { path: '/', maxAge: 2592000 }) // expires in 30 days
     }
 
     findMatches = (wordToMatch, stations) => {
@@ -46,6 +50,20 @@ class Settings extends React.Component {
                 settingsSearchFrom: matchArray
             });
         }
+
+        if (inputType === "to") {
+            this.setState({
+                settingsSearchTo: matchArray
+            });
+        }
+
+        if (e.target.value < 1 || matchArray < 1) {
+            // console.log("less than 1 character");
+            this.setState({
+                settingsSearchFrom: false,
+                settingsSearchTo: false,
+            });
+        }
     }
 
     updateFromInputField = e => {
@@ -56,9 +74,17 @@ class Settings extends React.Component {
         });
     }
 
+    updateToInputField = e => {
+        this.setState({
+            settingsStationTo: e.target.dataset.station,
+            stationToCode: e.target.dataset.code,
+            settingsSearchTo: false
+        });
+    }
+
     render() {
-        const { showSettingsMenu, toggleSettingsMenu, cookies } = this.props;
-        const { settingsSearchFrom } = this.state;
+        const { showSettingsMenu, toggleSettingsMenu } = this.props;
+        const { settingsSearchFrom, settingsSearchTo } = this.state;
         return (
             <StyledSettingsContainer>
                 <SettingsContainerLeft showSettingsMenu={showSettingsMenu}>
@@ -67,8 +93,9 @@ class Settings extends React.Component {
                     <p>Quick access buttons:</p>
                     <StationContainer>
                         <form onSubmit={(e) => this.handleSetStationsSubmit(e)} autoComplete="off">
+                            {/* From input */}
                             <div>
-                                <label htmlFor="stationFrom">Station to:</label>
+                                <label htmlFor="stationFrom">Station from:</label>
                                 <input
                                     id={'settingsStationFrom'}
                                     name={'settingsStationFrom'}
@@ -79,10 +106,34 @@ class Settings extends React.Component {
                                 />
                                 {
                                     settingsSearchFrom &&
-                                    <div>
+                                    <div style={{background: "#f9f9f9", padding: "5px"}}>
                                         {
                                             settingsSearchFrom.map((result, i) =>
                                                 <li key={i} onClick={(e) => this.updateFromInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
+                                                    {result.stationName}, {result.crsCode}
+                                                </li>
+                                            )
+                                        }
+                                    </div>
+                                }
+                            </div>
+                            {/* To input */}
+                            <div>
+                                <label htmlFor="stationFrom">Station to:</label>
+                                <input
+                                    id={'settingsStationTo'}
+                                    name={'settingsStationTo'}
+                                    type={'text'}
+                                    placeholder={'Station Name'}
+                                    value={this.state.settingsStationTo}
+                                    onChange={(e) => this.displayMatches(e, "to")}
+                                />
+                                {
+                                    settingsSearchTo &&
+                                    <div style={{background: "#f9f9f9", padding: "5px"}}>
+                                        {
+                                            settingsSearchTo.map((result, i) =>
+                                                <li key={i} onClick={(e) => this.updateToInputField(e, result)} data-station={result.stationName} data-code={result.crsCode}>
                                                     {result.stationName}, {result.crsCode}
                                                 </li>
                                             )
