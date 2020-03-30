@@ -22,7 +22,7 @@ const Card = ({ train, selectedTrain }) => (
                 }
                 {train.destination_name}
             </p>
-			<p style={{color: "#6e6e6e", fontSize: "14px"}}> From: {train.origin_name}</p>
+			<p className="train-from" style={{color: "#6e6e6e", fontSize: "14px"}}> From: {train.origin_name}</p>
             {
 				train.status === "LATE" || train.status === "CANCELLED"
 				?

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { StyledModal, ModalInner, ModalClose, ModalUpper, ModalMiddle, ModalLower } from './Modal.styles';
 
 import { ReactComponent as TransPennineLogo } from '../../assets/images/tp-express-icon.svg';
@@ -16,8 +15,8 @@ const operatorLogos = {
 const Modal = ({ showModal, destination_name, status, origin_name, expected_arrival_time, aimed_arrival_time, aimed_departure_time, operator, toggleModal }) => (
     <>
         {
-            showModal &&
-            <StyledModal>
+        showModal &&
+        <StyledModal id="modal">
             <ModalInner>
                 <ModalUpper>
                     <ModalClose onClick={toggleModal}>
@@ -36,7 +35,7 @@ const Modal = ({ showModal, destination_name, status, origin_name, expected_arri
                             {status.toLowerCase()}
                         </span>
                     }
-                    <p>Expected: {expected_arrival_time}</p>
+                    <p className="train-expected">Expected: {expected_arrival_time}</p>
                 </ModalUpper>
                 <ModalMiddle>
                     <div>

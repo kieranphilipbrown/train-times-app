@@ -61,8 +61,14 @@ export const CardInner = styled.div `
         margin-right: 10px;
     }
 
+    .train-from {
+        margin-bottom: 10px;
+    }
+
     .train-status {
+        display: block;
         font-size: 14px;
+        margin-bottom: 10px;
         text-transform: capitalize;
     }
 

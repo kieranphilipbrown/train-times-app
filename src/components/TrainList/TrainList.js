@@ -7,31 +7,10 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import InfoBox from '../InfoBox/InfoBox';
 import Card from '../Card/Card';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
-import { ReactComponent as TrainIcon } from '../../assets/images/train-icon.svg';
 import Search from '../Search/Search';
-
-const buttonData = [
-	{
-		id: 'NLW',
-		destination: 'MCV',
-		label: 'Newton-le-Willows to Victoria',
-	},
-	{
-		id: 'MCV',
-		destination: 'NLW',
-		label: 'Victoria to Newton-le-Willows',
-	},
-	{
-		id: 'NLW',
-		destination: 'MAN',
-		label: 'Newton-le-Willows to Piccadilly',
-	},
-	{
-		id: 'MAN',
-		destination: 'NLW',
-		label: 'Piccadilly to Newton-le-Willows',
-	},
-];
+import Settings from '../Settings/Settings';
+import { ReactComponent as SettingsIcon } from '../../assets/images/settings-icon.svg';
+import { withCookies } from 'react-cookie';
 
 class TrainList extends React.Component {
 
@@ -44,6 +23,7 @@ class TrainList extends React.Component {
 		isLoading: false,
 		showModal: false,
 		selectedTrain: {},
+		showSettingsMenu: false,
 	}
 
 	trainListCallback = (e) => {
@@ -86,6 +66,12 @@ class TrainList extends React.Component {
 		});
 	}
 
+	toggleSettingsMenu = () => {
+		this.setState({
+			showSettingsMenu: !this.state.showSettingsMenu,
+		});
+	}
+
 	handleFromChange = (event) => {
 		this.setState({
 			stationFrom: event.target.value,
@@ -99,9 +85,6 @@ class TrainList extends React.Component {
 	}
 
 	searchSubmit = fields => {
-		console.log('trainlist componnent: ', fields);
-		console.log(fields.stationFromCode);
-		console.log(fields.stationToCode);
 		this.setState({
 			isLoading: true,
 		});
@@ -126,19 +109,26 @@ class TrainList extends React.Component {
 	}
 
 	render() {
-		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain } = this.state;
+		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain, showSettingsMenu } = this.state;
 		return (
 			<>
 				<Loader showLoader={isLoading} />
+				<Settings showSettingsMenu={showSettingsMenu} toggleSettingsMenu={() => this.toggleSettingsMenu()} />
 				<main>
 					<ButtonContainer>
+						<TrainButton onClick={this.toggleSettingsMenu}>
+							<SettingsIcon />
+						</TrainButton>
 						{
-							buttonData.map((button, i) =>
-								<TrainButton key={`${button.id}-${i}`} id={button.id} data-des={button.destination} onClick={this.trainListCallback}>
-									<TrainIcon />
-									{button.label}
+							this.props.cookies.cookies.cookieFromCode && this.props.cookies.cookies.cookieFromCode &&
+							<>
+								<TrainButton id={this.props.cookies.cookies.cookieFromCode} data-des={this.props.cookies.cookies.cookieToCode} onClick={this.trainListCallback}>
+									<span>Out: </span>{this.props.cookies.cookies.cookieFromCode}
 								</TrainButton>
-							)
+								<TrainButton id={this.props.cookies.cookies.cookieToCode} data-des={this.props.cookies.cookies.cookieFromCode} onClick={this.trainListCallback}>
+									<span>Return: </span>{this.props.cookies.cookies.cookieToCode}
+								</TrainButton>
+							</>
 						}
 					</ButtonContainer>
 					<ErrorMessage showErrorMessage={trainFetchError} />
@@ -159,16 +149,6 @@ class TrainList extends React.Component {
 		);
 	}
 };
-
-const size = {
-	tablet: '768px',
-	desktop: '960px'
-}
-
-const device = {
-	tablet: `(min-width: ${size.tablet})`,
-	desktop: `(min-width: ${size.desktop})`
-}
 
 const ButtonContainer = styled.div`
 	background: #ffffff;
@@ -239,6 +219,12 @@ const TrainButton = styled.button`
 		vertical-align: middle;
 		width: 20px;
 	}
+
+	span {
+		font-size: 12px;
+		letter-spacing: 2px;
+		text-transform: capitalize;
+	}
 `;
 
 const Grid = styled.ul`
@@ -252,7 +238,7 @@ const Grid = styled.ul`
 	padding-left: 0;
 `;
 
-export default TrainList;
+export default withCookies(TrainList);
 
 TrainList.propTypes = {
 	title: PropTypes.string,

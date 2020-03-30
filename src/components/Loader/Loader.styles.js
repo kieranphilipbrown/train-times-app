@@ -19,6 +19,7 @@ export const StyledLoader = styled.div `
         -webkit-animation: flickerAnimation 1.5s infinite;
         -moz-animation: flickerAnimation 1.5s infinite;
         -o-animation: flickerAnimation 1.5s infinite;
-        animation: flickerAnimation 1.5s infinite;
+		animation: flickerAnimation 1.5s infinite;
+		margin-bottom: 15px;
     }
 `;

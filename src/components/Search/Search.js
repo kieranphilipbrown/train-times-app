@@ -32,9 +32,9 @@ class Search extends React.Component {
         this.setState({
             [e.target.name]: e.target.value,
         });
-        // console.log(e.target.value);
+        //console.log(e.target.value);
         const matchArray = this.findMatches(e.target.value, stations)
-        // console.log(matchArray);
+        //console.log(matchArray);
 
         if (inputType === "from") {
             this.setState({
@@ -46,7 +46,13 @@ class Search extends React.Component {
                 searchResultsTo: matchArray
             });
         }
-
+        if (e.target.value < 1 || matchArray < 1) {
+            // console.log("less than 1 character");
+            this.setState({
+                searchResultsFrom: false,
+                searchResultsTo: false,
+            });
+        }
     }
 
     updateFromInputField = e => {
@@ -54,7 +60,7 @@ class Search extends React.Component {
             stationFrom: e.target.dataset.station,
             stationFromCode: e.target.dataset.code,
             searchResultsFrom: false
-        })
+        });
     }
 
     updateToInputField = e => {
@@ -62,7 +68,7 @@ class Search extends React.Component {
             stationTo: e.target.dataset.station,
             stationToCode: e.target.dataset.code,
             searchResultsTo: false
-        })
+        });
     }
 
     render() {

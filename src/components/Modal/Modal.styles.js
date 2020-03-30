@@ -59,22 +59,30 @@ export const ModalUpper = styled.div `
     text-align: left;
 
     .train-title {
+        font-size: 18px;
         font-weight: bold;
+        margin-bottom: 15px;
         margin-right: 45px;
         margin-top: 0;
     }
 
     .train-from {
         color: #6e6e6e;
-        fontSize: 14px;
+        font-size: 16px;
         display: block;
         margin-bottom: 15px;
         margin-right: 45px;
     }
 
     .train-status {
+        display: block;
         font-size: 14px;
+        margin-bottom: 15px;
         text-transform: capitalize;
+    }
+
+    .train-expected {
+        margin-bottom: 15px;
     }
 
     .train-status--green {
@@ -91,7 +99,7 @@ export const ModalMiddle = styled.div `
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    padding: 0 1.5rem;
+    padding: 10px 1.5rem;
 `;
 
 export const ModalLower = styled.div `
