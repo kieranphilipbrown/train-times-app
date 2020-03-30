@@ -2,7 +2,7 @@ import React from 'react';
 import stations from '../../assets/data/stations.json';
 import { StyledSettingsContainer, SettingsContainerLeft, SettingsContainerRight, StationContainer } from './Settings.styles';
 import { ReactComponent as SettingsCloseIcon } from '../../assets/images/modal-close-icon.svg';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies } from 'react-cookie';
 
 class Settings extends React.Component {
 
@@ -18,7 +18,6 @@ class Settings extends React.Component {
     }
 
     findMatches = (wordToMatch, stations) => {
-        // console.log(stations.stations)
         return stations.stations.filter(station => {
             const regex = new RegExp(wordToMatch, 'gi');
             return station.stationName.match(regex) || station.crsCode.match(regex);
@@ -29,9 +28,7 @@ class Settings extends React.Component {
         this.setState({
             [e.target.name]: e.target.value,
         });
-        // console.log(e.target.value);
         const matchArray = this.findMatches(e.target.value, stations)
-        // console.log(matchArray);
 
         if (inputType === "from") {
             this.setState({
@@ -46,7 +43,6 @@ class Settings extends React.Component {
         }
 
         if (e.target.value < 1 || matchArray < 1) {
-            // console.log("less than 1 character");
             this.setState({
                 settingsSearchFrom: false,
                 settingsSearchTo: false,
@@ -94,7 +90,7 @@ class Settings extends React.Component {
                                     id={'settingsStationFrom'}
                                     name={'settingsStationFrom'}
                                     type={'text'}
-                                    placeholder={this.props.cookies.cookies.cookieFromCode}
+                                    placeholder={this.props.cookies.cookies.cookieFromCode || 'Station name'}
                                     value={this.state.settingsStationFrom}
                                     onChange={(e) => this.displayMatches(e, "from")}
                                 />
@@ -118,7 +114,7 @@ class Settings extends React.Component {
                                     id={'settingsStationTo'}
                                     name={'settingsStationTo'}
                                     type={'text'}
-                                    placeholder={this.props.cookies.cookies.cookieToCode}
+                                    placeholder={this.props.cookies.cookies.cookieToCode || 'Station name'}
                                     value={this.state.settingsStationTo}
                                     onChange={(e) => this.displayMatches(e, "to")}
                                 />

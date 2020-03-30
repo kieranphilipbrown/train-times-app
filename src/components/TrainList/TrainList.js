@@ -24,8 +24,6 @@ class TrainList extends React.Component {
 		showModal: false,
 		selectedTrain: {},
 		showSettingsMenu: false,
-		quickButtonFrom: '',
-		quickButtonTo: '',
 	}
 
 	trainListCallback = (e) => {
@@ -68,7 +66,7 @@ class TrainList extends React.Component {
 		});
 	}
 
-	toggleSettingsMenu = (event) => {
+	toggleSettingsMenu = () => {
 		this.setState({
 			showSettingsMenu: !this.state.showSettingsMenu,
 		});
@@ -87,9 +85,6 @@ class TrainList extends React.Component {
 	}
 
 	searchSubmit = fields => {
-		console.log('trainlist componnent: ', fields);
-		console.log(fields.stationFromCode);
-		console.log(fields.stationToCode);
 		this.setState({
 			isLoading: true,
 		});
@@ -115,9 +110,6 @@ class TrainList extends React.Component {
 
 	render() {
 		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain, showSettingsMenu } = this.state;
-		console.log("Trainlist state: ", this.state);
-		console.log(this.props.cookies.cookies.cookieFromCode)
-        console.log(this.props.cookies.cookies.cookieToCode)
 		return (
 			<>
 				<Loader showLoader={isLoading} />
@@ -127,12 +119,17 @@ class TrainList extends React.Component {
 						<TrainButton onClick={this.toggleSettingsMenu}>
 							<SettingsIcon />
 						</TrainButton>
-						<TrainButton id={this.props.cookies.cookies.cookieFromCode} data-des={this.props.cookies.cookies.cookieToCode} onClick={this.trainListCallback}>
-							<span>Out: </span>{this.props.cookies.cookies.cookieFromCode}
-						</TrainButton>
-						<TrainButton id={this.props.cookies.cookies.cookieToCode} data-des={this.props.cookies.cookies.cookieFromCode} onClick={this.trainListCallback}>
-							<span>Return: </span>{this.props.cookies.cookies.cookieToCode}
-						</TrainButton>
+						{
+							this.props.cookies.cookies.cookieFromCode && this.props.cookies.cookies.cookieFromCode &&
+							<>
+								<TrainButton id={this.props.cookies.cookies.cookieFromCode} data-des={this.props.cookies.cookies.cookieToCode} onClick={this.trainListCallback}>
+									<span>Out: </span>{this.props.cookies.cookies.cookieFromCode}
+								</TrainButton>
+								<TrainButton id={this.props.cookies.cookies.cookieToCode} data-des={this.props.cookies.cookies.cookieFromCode} onClick={this.trainListCallback}>
+									<span>Return: </span>{this.props.cookies.cookies.cookieToCode}
+								</TrainButton>
+							</>
+						}
 					</ButtonContainer>
 					<ErrorMessage showErrorMessage={trainFetchError} />
 					<Search onSubmit={fields => this.searchSubmit(fields)} />
@@ -152,28 +149,6 @@ class TrainList extends React.Component {
 		);
 	}
 };
-
-const size = {
-	tablet: '768px',
-	desktop: '960px'
-}
-
-const SettingsButton = styled.button`
-	background: transparent;
-	border: 2px solid transparent;
-	border-radius: 5px;
-	margin-right: 5%;
-	padding: 10px;
-
-	&:hover {
-		border: 2px solid #c8c8c8;
-		cursor: pointer;
-	}
-
-	svg {
-		fill: #d5d5d5;
-	}
-`;
 
 const ButtonContainer = styled.div`
 	background: #ffffff;
