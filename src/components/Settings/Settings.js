@@ -68,8 +68,8 @@ class Settings extends React.Component {
 
     handleSetStationsSubmit = (e) => {
         e.preventDefault();
-        this.props.cookies.set('cookieFromCode', this.state.stationFromCode, { path: '/', maxAge: 2592000 }) // expires in 30 days
-        this.props.cookies.set('cookieToCode', this.state.stationToCode, { path: '/', maxAge: 2592000 }) // expires in 30 days
+        this.props.cookies.set('cookieFromCode', this.state.stationFromCode, { path: '/', maxAge: 31536000 }) // expires in 30 days
+        this.props.cookies.set('cookieToCode', this.state.stationToCode, { path: '/', maxAge: 31536000 }) // expires in 30 days
     }
 
     render() {
