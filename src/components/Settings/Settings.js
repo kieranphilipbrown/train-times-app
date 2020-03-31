@@ -68,6 +68,8 @@ class Settings extends React.Component {
 
     handleSetStationsSubmit = (e) => {
         e.preventDefault();
+        this.props.cookies.set('cookieFromStation', this.state.settingsStationFrom, { path: '/', maxAge: 31536000 }) // expires in 30 days
+        this.props.cookies.set('cookieToStation', this.state.settingsStationTo, { path: '/', maxAge: 31536000 }) // expires in 30 days
         this.props.cookies.set('cookieFromCode', this.state.stationFromCode, { path: '/', maxAge: 31536000 }) // expires in 30 days
         this.props.cookies.set('cookieToCode', this.state.stationToCode, { path: '/', maxAge: 31536000 }) // expires in 30 days
     }
@@ -89,7 +91,7 @@ class Settings extends React.Component {
                                     id={'settingsStationFrom'}
                                     name={'settingsStationFrom'}
                                     type={'text'}
-                                    placeholder={this.props.cookies.cookies.cookieFromCode || 'Station name'}
+                                    placeholder={this.props.cookies.cookies.cookieFromStation || 'Station name'}
                                     value={this.state.settingsStationFrom}
                                     onChange={(e) => this.displayMatches(e, "from")}
                                 />
@@ -112,7 +114,7 @@ class Settings extends React.Component {
                                     id={'settingsStationTo'}
                                     name={'settingsStationTo'}
                                     type={'text'}
-                                    placeholder={this.props.cookies.cookies.cookieToCode || 'Station name'}
+                                    placeholder={this.props.cookies.cookies.cookieToStation || 'Station name'}
                                     value={this.state.settingsStationTo}
                                     onChange={(e) => this.displayMatches(e, "to")}
                                 />

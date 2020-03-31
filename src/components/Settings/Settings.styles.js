@@ -75,6 +75,7 @@ export const SettingsContainerRight = styled.div`
 	span {
 		color: #ffffff;
 		display: ${props => props.showSettingsMenu ? "block" : "none"};
+		padding-left: 400px;
 	}
 `;
 
@@ -92,6 +93,12 @@ export const StationContainer = styled.div`
 		border-radius: 5px;
 		margin-bottom: 15px;
 		padding: 10px 20px;
+		transition: 0.4s ease;
+
+		&:focus {
+			border-color: #6f2cac;
+			box-shadow: 0 0 0 .2rem rgba(111, 44, 172,.25)!important;
+		}
 	}
 `;
 
