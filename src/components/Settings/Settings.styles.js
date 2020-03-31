@@ -82,7 +82,8 @@ export const StationContainer = styled.div`
 	border-radius: 5px;
 	padding: 20px 0;
 
-	p {
+	h4 {
+		margin-bottom: 15px;
 		margin-top: 0;
 	}
 

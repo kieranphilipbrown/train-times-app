@@ -12,7 +12,7 @@ const device = {
 
 export const SearchContainer = styled.div`
 	background: white;
-	border-bottom: 1px solid #cecece;
+	border-bottom: 1px solid #e9e9e9;
 	padding: 15px 0;
 `;
 

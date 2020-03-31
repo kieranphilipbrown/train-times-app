@@ -80,11 +80,11 @@ class Settings extends React.Component {
                 <SettingsContainerLeft showSettingsMenu={showSettingsMenu}>
                     <SettingsCloseIcon onClick={toggleSettingsMenu} />
                     <h2>Settings Menu</h2>
-                    <p>Quick access buttons:</p>
                     <StationContainer>
+                        <h4>Quick access buttons:</h4>
                         <form onSubmit={(e) => this.handleSetStationsSubmit(e)} autoComplete="off">
                             <>
-                                <label htmlFor="stationFrom">Station from:</label>
+                                <label htmlFor="stationFrom">Home station:</label>
                                 <input
                                     id={'settingsStationFrom'}
                                     name={'settingsStationFrom'}
@@ -107,7 +107,7 @@ class Settings extends React.Component {
                                 }
                             </>
                             <>
-                                <label htmlFor="stationFrom">Station to:</label>
+                                <label htmlFor="stationFrom">Destination station:</label>
                                 <input
                                     id={'settingsStationTo'}
                                     name={'settingsStationTo'}
