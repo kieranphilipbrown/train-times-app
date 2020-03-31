@@ -123,10 +123,10 @@ class TrainList extends React.Component {
 							this.props.cookies.cookies.cookieFromCode && this.props.cookies.cookies.cookieFromCode &&
 							<>
 								<TrainButton id={this.props.cookies.cookies.cookieFromCode} data-des={this.props.cookies.cookies.cookieToCode} onClick={this.trainListCallback}>
-									<span>Out: </span>{this.props.cookies.cookies.cookieFromStation}
+									<span>Home: </span>{this.props.cookies.cookies.cookieFromStation}
 								</TrainButton>
 								<TrainButton id={this.props.cookies.cookies.cookieToCode} data-des={this.props.cookies.cookies.cookieFromCode} onClick={this.trainListCallback}>
-									<span>Return: </span>{this.props.cookies.cookies.cookieToStation}
+									<span>Work: </span>{this.props.cookies.cookies.cookieToStation}
 								</TrainButton>
 							</>
 						}
