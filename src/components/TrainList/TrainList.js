@@ -27,6 +27,7 @@ class TrainList extends React.Component {
 	}
 
 	trainListCallback = (e) => {
+		console.log(e)
 		this.setState({
 			isLoading: true,
 		});
@@ -37,12 +38,21 @@ class TrainList extends React.Component {
 				return response.json();
 			})
 			.then((data) => {
-				this.setState({
-					stationName: data.station_name,
-					trainList: data.departures.all,
-					trainFetchError: false,
-					isLoading: false,
-				})
+				if(data.departures.all.length < 1) {
+					this.setState({
+						stationName: data.station_name,
+						trainList: data.departures.all,
+						trainFetchError: true,
+						isLoading: false,
+					});
+				} else {
+					this.setState({
+						stationName: data.station_name,
+						trainList: data.departures.all,
+						trainFetchError: false,
+						isLoading: false,
+					});
+				}
 			}).catch((error) => {
 				console.log('Error:', error);
 				this.setState({

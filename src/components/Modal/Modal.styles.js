@@ -47,6 +47,7 @@ export const ModalInner = styled.div `
     min-height: 200px;
     position: relative;
     width: 92%;
+    z-index: 30;
 
 	@media ${device.tablet} {
 		width: 380px;
