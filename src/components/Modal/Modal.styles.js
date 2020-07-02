@@ -75,10 +75,16 @@ export const ModalUpper = styled.div `
     }
 
     .train-status {
-        display: block;
-        font-size: 14px;
-        margin-bottom: 15px;
-        text-transform: capitalize;
+        border-radius: .25rem;
+        display: inline-block;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 10px;
+        padding: .25em .4em;
+        text-align: center;
+        vertical-align: baseline;
+        white-space: nowrap;
     }
 
     .train-expected {
@@ -86,11 +92,13 @@ export const ModalUpper = styled.div `
     }
 
     .train-status--green {
-        color: #2e8212;
+        background-color: rgba(10,207,151,.18);
+        color: #0acf97;
     }
 
     .train-status--red {
-        color: #a93a10;
+        background-color: rgba(250,92,124,.18);
+        color: #fa5c7c;
     }
 `;
 
