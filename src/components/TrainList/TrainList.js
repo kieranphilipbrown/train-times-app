@@ -69,8 +69,7 @@ class TrainList extends React.Component {
 		})
 	}
 
-	toggleModal = (event) => {
-		console.log(event);
+	toggleModal = () => {
 		this.setState({
 			showModal: !this.state.showModal,
 		});
@@ -153,7 +152,10 @@ class TrainList extends React.Component {
 							}
 						</Grid>
 					</Wrapper>
-					<Modal { ...selectedTrain } showModal={showModal} toggleModal={this.toggleModal} />
+					{
+						showModal &&
+						<Modal { ...selectedTrain } showModal={showModal} toggleModal={this.toggleModal}></Modal>
+					}
 				</main>
 			</>
 		);
@@ -180,7 +182,7 @@ const TrainButton = styled.button`
 	font-family: Comfortaa;
 	font-size: 12px;
 	margin: 0 5% 0 0;
-	min-width: 130px;
+	min-width: auto;
 	outline: none;
 	padding: 10px 15px;
 	position: relative;
@@ -188,6 +190,7 @@ const TrainButton = styled.button`
 
 	@include tablet {
 		margin: 0;
+		min-width: 130px;
 	}
 
 	&:last-of-type {
@@ -224,10 +227,14 @@ const TrainButton = styled.button`
 
 	svg {
 		fill: #ffffff;
-		margin-right: 8px;
+		margin-right: 0;
 		margin-top: -3px;
 		vertical-align: middle;
 		width: 20px;
+
+		@include tablet {
+			margin-right: 8px;
+		}
 	}
 
 	span {
