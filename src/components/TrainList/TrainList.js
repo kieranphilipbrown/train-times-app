@@ -7,6 +7,7 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import InfoBox from '../InfoBox/InfoBox';
 import Card from '../Card/Card';
 import { Wrapper } from '../../assets/Styled/Utility/Utility';
+import Results from '../Results/Results';
 import Search from '../Search/Search';
 import Settings from '../Settings/Settings';
 import { ReactComponent as SettingsIcon } from '../../assets/images/settings-icon.svg';
@@ -20,10 +21,12 @@ class TrainList extends React.Component {
 		stationFrom: '',
 		stationTo: '',
 		trainFetchError: false,
+		trainResultsZero: false,
 		isLoading: false,
 		showModal: false,
 		selectedTrain: {},
 		showSettingsMenu: false,
+		results: '',
 	}
 
 	trainListCallback = (e) => {
@@ -38,19 +41,23 @@ class TrainList extends React.Component {
 				return response.json();
 			})
 			.then((data) => {
+				console.log(data)
 				if(data.departures.all.length < 1) {
 					this.setState({
 						stationName: data.station_name,
 						trainList: data.departures.all,
-						trainFetchError: true,
+						trainResultsZero: true,
 						isLoading: false,
+						results: data.departures.all.length,
 					});
 				} else {
 					this.setState({
 						stationName: data.station_name,
 						trainList: data.departures.all,
 						trainFetchError: false,
+						trainResultsZero: false,
 						isLoading: false,
+						results: data.departures.all.length,
 					});
 				}
 			}).catch((error) => {
@@ -58,6 +65,7 @@ class TrainList extends React.Component {
 				this.setState({
 					trainFetchError: true,
 					isLoading: false,
+					trainResultsZero: false,
 				});
 			});
 	}
@@ -102,23 +110,27 @@ class TrainList extends React.Component {
 				return response.json();
 			})
 			.then((data) => {
+				console.log(data)
 				this.setState({
 					stationName: data.station_name,
 					trainList: data.departures.all,
 					trainFetchError: false,
 					isLoading: false,
+					trainResultsZero: false,
+					results: data.departures.all.length,
 				})
 			}).catch((error) => {
 				console.log('Error:', error);
 				this.setState({
 					trainFetchError: true,
 					isLoading: false,
+					trainResultsZero: false,
 				});
 			});
 	}
 
 	render() {
-		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain, showSettingsMenu } = this.state;
+		const { trainList, stationName, trainFetchError, isLoading, showModal, selectedTrain, showSettingsMenu, trainResultsZero, results } = this.state;
 		return (
 			<>
 				<Loader showLoader={isLoading} />
@@ -145,10 +157,15 @@ class TrainList extends React.Component {
 					<InfoBox station={stationName} />
 					<Wrapper>
 						<Grid>
-							{trainList && trainList.length > 0 && !trainFetchError &&
+							{
+								trainList && trainList.length > 0 && !trainFetchError &&
 								trainList.map((train, i) =>
 									<Card train={train} key={i} selectedTrain={this.setSelectedTrain} />
 								)
+							}
+							{
+								trainResultsZero &&
+								<Results results={results} />
 							}
 						</Grid>
 					</Wrapper>

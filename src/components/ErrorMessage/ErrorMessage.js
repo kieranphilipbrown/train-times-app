@@ -9,7 +9,7 @@ const ErrorMessage = ({ showErrorMessage }) => (
             showErrorMessage &&
             <StyledErrorMessage>
                 <ErrorIcon />
-                No results for that search. Please try again.
+                There seems to have been an error. Please try again.
             </StyledErrorMessage>
         }
     </>
