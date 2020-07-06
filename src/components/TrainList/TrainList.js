@@ -111,14 +111,24 @@ class TrainList extends React.Component {
 			})
 			.then((data) => {
 				console.log(data)
-				this.setState({
-					stationName: data.station_name,
-					trainList: data.departures.all,
-					trainFetchError: false,
-					isLoading: false,
-					trainResultsZero: false,
-					results: data.departures.all.length,
-				})
+				if(data.departures.all.length < 1) {
+					this.setState({
+						stationName: data.station_name,
+						trainList: data.departures.all,
+						trainResultsZero: true,
+						isLoading: false,
+						results: data.departures.all.length,
+					});
+				} else {
+					this.setState({
+						stationName: data.station_name,
+						trainList: data.departures.all,
+						trainFetchError: false,
+						isLoading: false,
+						trainResultsZero: false,
+						results: data.departures.all.length,
+					});
+				}
 			}).catch((error) => {
 				console.log('Error:', error);
 				this.setState({
