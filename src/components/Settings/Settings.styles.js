@@ -12,14 +12,14 @@ const device = {
 
 export const StyledSettingsContainer = styled.div`
 	background: green;
-    width: 100%
+    width: 100%;
 `;
 
 export const SettingsContainerLeft = styled.div`
     background: #ffffff;
     height: 100%;
 	left: 0;
-	max-width: 400px;
+	max-width: 250px;
 	padding: 20px;
 	position: absolute;
 	text-align: left;
@@ -32,6 +32,7 @@ export const SettingsContainerLeft = styled.div`
 
 	@media ${device.tablet} {
 		max-width: 400px;
+		padding: 30px;
 		width: 400px;
 	}
 
@@ -47,6 +48,7 @@ export const SettingsContainerLeft = styled.div`
 
 	h2 {
 		margin-bottom: 30px;
+		padding-right: 40px;
 	}
 
 	p {
@@ -72,10 +74,18 @@ export const SettingsContainerRight = styled.div`
 	width: ${props => props.showSettingsMenu ? "100%" : "0"};
 	z-index: 8;
 
+	&:hover {
+		cursor: pointer;
+	}
+
 	span {
 		color: #ffffff;
-		display: ${props => props.showSettingsMenu ? "block" : "none"};
-		padding-left: 400px;
+		display: none;
+
+		@media ${device.tablet} {
+			display: ${props => props.showSettingsMenu ? "block" : "none"};
+			padding-left: 400px;
+		}
 	}
 `;
 
@@ -94,6 +104,7 @@ export const StationContainer = styled.div`
 		margin-bottom: 15px;
 		padding: 10px 20px;
 		transition: 0.4s ease;
+		width: 100%;
 
 		&:focus {
 			border-color: #6f2cac;

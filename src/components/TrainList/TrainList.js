@@ -29,14 +29,14 @@ class TrainList extends React.Component {
 		results: '',
 	}
 
-	trainListCallback = (e) => {
+	trainListCallback = async (e) => {
 		console.log(e)
 		this.setState({
 			isLoading: true,
 		});
 		const trainButton = e.target.id;
 		const destination = e.target.dataset.des;
-		fetch(`https://transportapi.com/v3/uk/train/station/${trainButton}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${destination}&darwin=true&train_status=passenger`)
+		await fetch(`https://transportapi.com/v3/uk/train/station/${trainButton}/live.json?app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&calling_at=${destination}&darwin=true&train_status=passenger`)
 			.then((response) => {
 				return response.json();
 			})
@@ -101,11 +101,11 @@ class TrainList extends React.Component {
 		});
 	}
 
-	searchSubmit = fields => {
+	searchSubmit = async (fields) => {
 		this.setState({
 			isLoading: true,
 		});
-		fetch(`https://transportapi.com/v3/uk/train/station/${fields.stationFromCode}/live.json?app_id=ba2a7c92&app_key=761d4fbe8af3114e3dc16dedf2b91443&calling_at=${fields.stationToCode}&darwin=true&train_status=passenger`)
+		await fetch(`https://transportapi.com/v3/uk/train/station/${fields.stationFromCode}/live.json?app_id=${process.env.REACT_APP_APP_ID}&app_key=${process.env.REACT_APP_API_KEY}&calling_at=${fields.stationToCode}&darwin=true&train_status=passenger`)
 			.then((response) => {
 				return response.json();
 			})
@@ -278,7 +278,7 @@ const Grid = styled.ul`
 	grid-gap: 20px;
 	list-style-type: none;
 	margin: 0 auto 40px;
-	max-width: 1200px;
+	max-width: 500px;
 	padding-left: 0;
 `;
 
