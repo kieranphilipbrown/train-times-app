@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ReactComponent as ClockIcon } from '../../assets/images/clock-icon.svg';
 import { StyledCard, CardInner } from './Card.styles';
@@ -38,5 +39,10 @@ const Card = ({ train, selectedTrain }) => (
         </CardInner>
     </StyledCard>
 );
+
+Card.propTypes = {
+    train: PropTypes.object.isRequired,
+    selectedTrain: PropTypes.func.isRequired,
+}
 
 export default Card;
