@@ -36,7 +36,7 @@ export const SettingsContainerLeft = styled.div`
 		width: 400px;
 	}
 
-	svg {
+	.close-icon {
 		position: absolute;
 		right: 15px;
 		top: 15px;
@@ -47,6 +47,8 @@ export const SettingsContainerLeft = styled.div`
 	}
 
 	h2 {
+		color: #646464;
+		font-size: 22px;
 		margin-bottom: 30px;
 		padding-right: 40px;
 	}
@@ -56,8 +58,15 @@ export const SettingsContainerLeft = styled.div`
 	}
 
 	label {
+		color: #232323;
 		display: block;
-		margin-bottom: 5px;
+		font-weight: bold;
+		margin-bottom: 8px;
+	}
+
+	.settings-label-icon {
+		margin-right: 8px;
+		margin-top: -8px;
 	}
 `;
 
@@ -94,14 +103,16 @@ export const StationContainer = styled.div`
 	padding: 20px 0;
 
 	h4 {
-		margin-bottom: 15px;
+		color: #232323;
+		margin-bottom: 20px;
 		margin-top: 0;
 	}
 
 	input {
 		border: 2px solid #c8c8c8;
 		border-radius: 5px;
-		margin-bottom: 15px;
+		margin-bottom: 25px;
+		outline: none;
 		padding: 10px 20px;
 		transition: 0.4s ease;
 		width: 100%;

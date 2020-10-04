@@ -60,6 +60,7 @@ export const ModalUpper = styled.div `
     text-align: left;
 
     .train-title {
+        color: #646464;
         font-size: 18px;
         font-weight: bold;
         margin-bottom: 15px;
@@ -68,7 +69,7 @@ export const ModalUpper = styled.div `
     }
 
     .train-from {
-        color: #6e6e6e;
+        color: #929292;
         font-size: 16px;
         display: block;
         margin-bottom: 15px;

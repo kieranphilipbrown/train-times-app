@@ -1,8 +1,10 @@
 import React from 'react';
+import { withCookies } from 'react-cookie';
 import stations from '../../assets/data/stations.json';
 import { StyledSettingsContainer, SettingsContainerLeft, SettingsContainerRight, StationContainer, SettingsSearchResults } from './Settings.styles';
 import { ReactComponent as SettingsCloseIcon } from '../../assets/images/modal-close-icon.svg';
-import { withCookies } from 'react-cookie';
+import { ReactComponent as HomeIcon } from '../../assets/images/home-icon.svg';
+import { ReactComponent as FlagIcon } from '../../assets/images/flag-icon.svg';
 
 class Settings extends React.Component {
 
@@ -86,7 +88,10 @@ class Settings extends React.Component {
                         <h4>Quick access buttons:</h4>
                         <form onSubmit={(e) => this.handleSetStationsSubmit(e)} autoComplete="off">
                             <>
-                                <label htmlFor="stationFrom">Home station:</label>
+                                <label htmlFor="stationFrom">
+                                    <HomeIcon />
+                                    Home station
+                                </label>
                                 <input
                                     id={'settingsStationFrom'}
                                     name={'settingsStationFrom'}
@@ -109,7 +114,10 @@ class Settings extends React.Component {
                                 }
                             </>
                             <>
-                                <label htmlFor="stationFrom">Destination station:</label>
+                                <label htmlFor="stationFrom">
+                                    <FlagIcon />
+                                    Destination station
+                                </label>
                                 <input
                                     id={'settingsStationTo'}
                                     name={'settingsStationTo'}

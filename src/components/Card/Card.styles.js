@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledCard = styled.div `
     background: #fff;
-    border-radius: 18px;
+    border-radius: 12px;
     box-shadow: 0 3px 13px -2px rgba(0,0,0,.15);
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ export const CardInner = styled.div `
     text-align: left;
 
     .train-title {
-        color: #3e3e3e;
+        color: #646464;
         font-size: 18px;
         font-weight: bold;
         margin-bottom: 10px;
@@ -56,12 +56,13 @@ export const CardInner = styled.div `
     }
 
     .train-time {
-        color: #333333;
+        color: #646464;
         display: inline-block;
         margin-right: 10px;
     }
 
     .train-from {
+        color: #929292;
         margin-bottom: 10px;
     }
 
@@ -72,7 +73,7 @@ export const CardInner = styled.div `
         font-weight: 700;
         line-height: 1;
         margin-bottom: 10px;
-        padding: .25em .4em;
+        padding: .35em .7em;;
         text-align: center;
         vertical-align: baseline;
         white-space: nowrap;
@@ -80,7 +81,7 @@ export const CardInner = styled.div `
 
     .train-status--green {
         background-color: rgba(10,207,151,.18);
-        color: #0acf97;
+        color: #009e71;
     }
 
     .train-status--red {
