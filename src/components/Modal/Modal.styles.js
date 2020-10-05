@@ -12,7 +12,7 @@ const device = {
 
 export const StyledModal = styled.div `
     align-items: center;
-    background: #f6f2edf0;
+    background: #b3aa9cd9;
     bottom: 0;
     display: flex;
     justify-content: center;

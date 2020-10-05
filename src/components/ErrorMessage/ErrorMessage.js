@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { ReactComponent as ErrorIcon } from '../../assets/images/error-icon.svg';
+import PropTypes from 'prop-types'
 import { StyledErrorMessage } from './ErrorMessage.styles';
+import { ReactComponent as ErrorIcon } from '../../assets/images/error-icon.svg';
 
 const ErrorMessage = ({ showErrorMessage }) => (
     <>
@@ -14,5 +14,9 @@ const ErrorMessage = ({ showErrorMessage }) => (
         }
     </>
 );
+
+ErrorMessage.propTypes = {
+    showErrorMessage: PropTypes.bool.isRequired,
+}
 
 export default ErrorMessage;
