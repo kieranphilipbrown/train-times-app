@@ -1,7 +1,7 @@
 
 # The Train App
 
-Simple & clean train time tracking app.
+Simple & clean train time app using the Transport API.
 
 ### Features
 
